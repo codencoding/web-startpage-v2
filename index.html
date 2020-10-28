@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>:l</title>
+    <meta name="author" content="Chase Oden">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="include/stylesheet.css" type="text/css" />
+    <script src="js/config.js"></script>
+</head>
+
+<body onload="init_elem_refs()">
+    <div class="background"></div>
+    <div id="main_display">
+        <div id="header">
+            <div id="tab_switcher">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <div id="weather">
+                <p id="temperature">0</p>
+                <div class="marquee">
+                    <p id="weather_desc" class="paused" onmouseover="run_weather_desc()">Cloudy skies and damp roads</p>
+                </div>
+            </div>
+
+            <div id="time"></div>
+            <div id="date"></div>
+        </div>
+
+        <img class="background page_1" src="include/imgs/samurai.png">
+
+        <div id="pg1_footer" class="page_1">
+            <div id="search_options">
+                <img class="small_ico border" src="include/imgs/youtube.png">
+                <img class="small_ico border" src="include/imgs/duckduckgo.png">
+            </div>
+            <input id="search_bar" placeholder="duckduckgo">
+        </div>
+    </div>
+</body>
+
+</html>
