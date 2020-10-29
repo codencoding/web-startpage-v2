@@ -24,14 +24,29 @@ body {
 
 #main_display {
     background-color: #333300;
-    width: 500px;
-    height: 500px;
+    width: 97vw;
+    height: 97vw;
+    min-width: 370px;
+    min-height: 370px;
+    max-width: 97vh;
+    max-height: 97vh;
+    max-width: 500px;
+    max-height: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     border: 2px var(--secondary_color) solid
+}
+
+@media ((max-width: 500px) or (max-height: 500px)) {
+    #main_display {
+        /* max-width: 500px;
+        max-height: 500px; */
+        max-width: 97vh;
+        max-height: 97vh;
+    }
 }
 
 .background {

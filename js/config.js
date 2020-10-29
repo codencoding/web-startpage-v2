@@ -49,14 +49,11 @@ function updateWeather(update) {
 
     let key = localStorage.getItem("weather_key");
     let city_id = localStorage.getItem("city_id");
-    console.log("WORKING WITH INPUT");
     fetch(`https://api.openweathermap.org/data/2.5/weather?id=${city_id}&appid=${key}`)
         .then((response) => {
-            console.log("WORKING WITH RESPONSE");
             return response.json()
         })
         .then((data) => {
-            console.log("WORKING WITH DATA");
             // Work with JSON data here
             let city_name = data["name"];
             // Find a way to have option for either Celcius or Fahrenheit conversion
