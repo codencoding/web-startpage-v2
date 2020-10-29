@@ -111,6 +111,7 @@ body {
     padding: 2px;
     margin-right: 5px;
     padding-left: 5px;
+    border-radius: 4px;
 }
 
 #weather {
@@ -213,6 +214,7 @@ body {
     margin: 2px;
     border: var(--secondary_color) 2px solid;
     background-color: var(--tertiary_color);
+    border-radius: 2px;
 }
 
 .small_ico:hover {
@@ -235,7 +237,7 @@ body {
 }
 
 .circle:hover {
-    background-color: var(--primary_color);
+    background-color: var(--tertiary_color);
     transition: 0.1s
 }
 

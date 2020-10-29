@@ -9,7 +9,7 @@
     <script src="js/config.js"></script>
 </head>
 
-<body onload="init_elem_refs(); run_clock();">
+<body onload="init_elem_refs(); run_clock(); listen_for_search();">
     <div class="background main_bg"></div>
     
     </div>
@@ -33,10 +33,10 @@
 
         <div id="pg1_footer" class="page_1">
             <div id="search_options">
-                <img class="small_ico border" src="include/imgs/youtube.png">
-                <img class="small_ico border" src="include/imgs/duckduckgo.png">
+                <img class="small_ico border" src="include/imgs/duckduckgo.png" onclick="change_search_engine({'name':'duckduckgo','fnc':duckduckgoSearch})">
+                <img class="small_ico border" src="include/imgs/youtube.png" onclick="change_search_engine({'name':'youtube','fnc':youtubeSearch})">
             </div>
-            <input id="search_bar" placeholder="duckduckgo" autofocus>
+            <input id="search_bar" placeholder="Search duckduckgo" autofocus>
         </div>
 
         <!-- <div class="page_2">

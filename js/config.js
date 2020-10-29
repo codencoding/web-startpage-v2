@@ -2,13 +2,16 @@ var time_elem;
 var curr_date;
 var weather_temp;
 var weather_desc;
+var search_bar;
 var dt = new Date();
+var active_search_eng = {"name":"duckduckgo","fnc":duckduckgoSearch};
 
 function init_elem_refs() {
     time_elem = document.getElementById("time");
     date_elem = document.getElementById("date");
     weather_desc = document.getElementById("weather_desc");
     weather_temp = document.getElementById("temperature");
+    search_bar = document.getElementById("search_bar");
 }
 
 var cookie_raw = document.cookie.split(';');
@@ -80,6 +83,32 @@ if (("city_id" in localStorage) && ("weather_key" in localStorage)) {
     }
     // Auto-update weather every 10 minutes.
     setInterval(updateWeather, 600000);
+}
+
+function change_search_engine(sengine) {
+    active_search_eng = sengine;
+    search_bar.placeholder = "Search " + sengine["name"];
+}
+
+function duckduckgoSearch(search_input) {
+    window.location.href = "https://duckduckgo.com/?q=" + search_input + "&ia=web";
+}
+
+function youtubeSearch(search_input) {
+    window.location.href = "https://www.youtube.com/results?search_query=" + search_input;
+}
+
+function search(search_input) {
+    active_search_eng["fnc"](search_input)
+}
+
+function listen_for_search() {
+    search_bar.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            search(search_bar.value);
+        }
+    }); 
 }
 
 console.log("Config loaded");
