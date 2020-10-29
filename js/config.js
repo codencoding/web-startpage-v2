@@ -20,8 +20,6 @@ for (var i in cookie_raw) {
 
 
 function run_clock() {
-    dt = new Date();
-
     let curr_date = dt.toDateString();
     let curr_time = dt.toLocaleTimeString();
 
@@ -29,6 +27,8 @@ function run_clock() {
         date_elem.innerHTML = curr_date;
     }
     time_elem.innerHTML = curr_time;
+
+    dt = new Date();
 }
 
 function run_weather_desc() {

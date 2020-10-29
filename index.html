@@ -9,9 +9,11 @@
     <script src="js/config.js"></script>
 </head>
 
-<body onload="init_elem_refs()">
-    <div class="background"></div>
-    <div id="main_display">
+<body onload="init_elem_refs(); run_clock();">
+    <div class="background main_bg"></div>
+    
+    </div>
+    <div class="background" id="main_display">
         <div id="header">
             <div id="tab_switcher">
                 <div class="circle"></div>
@@ -29,8 +31,6 @@
             <div id="date"></div>
         </div>
 
-        <img class="background page_1" src="include/imgs/samurai.png">
-
         <div id="pg1_footer" class="page_1">
             <div id="search_options">
                 <img class="small_ico border" src="include/imgs/youtube.png">
@@ -38,6 +38,29 @@
             </div>
             <input id="search_bar" placeholder="duckduckgo" autofocus>
         </div>
+
+        <!-- <div class="page_2">
+            <div id="tables">
+                <div class="column">
+                    <p class="header">Social</p>
+                    <p>
+                        testing
+                    </p>
+                    <p href="https://google.com">
+                        Facebook
+                    </p>
+                    <p href="https://google.com">
+                        Messenger
+                    </p>
+                </div>
+                <div class="column">
+                    col
+                </div>
+                <div class="column">
+                    col
+                </div>
+            </div>
+        </div> -->
     </div>
 </body>
 
