@@ -308,6 +308,13 @@ td {
     justify-content: space-between;
 }
 
+.page_1 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
 .page_2 {
     width: 100%;
     height: 100%;
@@ -346,7 +353,7 @@ td {
     font-size: 12pt;
 }
 
-.page_2 > div > div > div > p:hover {
+div.column > div > p:hover {
     cursor: pointer;
 }
 
@@ -369,5 +376,5 @@ div.page_2 {
 }
 
 .column > div {
-    margin-bottom: 90px;
+    height: 40%;
 }
