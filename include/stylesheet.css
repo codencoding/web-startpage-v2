@@ -315,13 +315,6 @@ td {
     z-index: 1;
 }
 
-.page_2 {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 1;
-}
-
 #tables {
     position: absolute;
     z-index: inherit;
@@ -346,7 +339,7 @@ td {
     margin-right: 20px;
 }
 
-.column > div > p {
+.column > div > a {
     display: block;
     text-decoration: none;
     color: var(--text_color);
@@ -354,7 +347,7 @@ td {
     font-size: 12pt;
 }
 
-.column > div > p:hover {
+.column > div > a:hover {
     filter: brightness(1.0);
 }
 
@@ -370,27 +363,17 @@ div.column > div > p:hover {
     cursor: default;
 }
 
-div.page_2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.page_2 > * {
-    z-index: inherit;
-}
-
 .column > div {
     height: 30%;
 }
 
-.page_3>* {
+.page_2>* {
     width: 100%;
     height: 528px;
     border-radius: 0px;
 }
 
-.page_4>* {
+.page_3>* {
     width: 100%;
     height: 528px;
     border-radius: 0px;
