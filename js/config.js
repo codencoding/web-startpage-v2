@@ -4,7 +4,8 @@ var weather_temp;
 var weather_desc;
 var search_bar;
 var dt = new Date();
-var active_search_eng = {"name":"duckduckgo","fnc":duckduckgoSearch};
+var active_search_eng = {"name":"duckduckgo","fnc":duckduckgoSearch, "elem":null};
+var active_tab = {"num":1, "elem":null};
 
 function init_elem_refs() {
     time_elem = document.getElementById("time");
@@ -12,6 +13,8 @@ function init_elem_refs() {
     weather_desc = document.getElementById("weather_desc");
     weather_temp = document.getElementById("temperature");
     search_bar = document.getElementById("search_bar");
+    active_search_eng["elem"] = document.getElementById("default_search");
+    active_tab["elem"] = document.getElementById("default_tab");
 }
 
 var cookie_raw = document.cookie.split(';');
@@ -86,8 +89,37 @@ if (("city_id" in localStorage) && ("weather_key" in localStorage)) {
 }
 
 function change_search_engine(sengine) {
+    active_search_eng["elem"].classList.toggle("ico_active");
+    
     active_search_eng = sengine;
-    search_bar.placeholder = "Search " + sengine["name"];
+    search_bar.placeholder = "Search " + sengine["name"] + " or paste a link";
+    sengine["elem"].classList.toggle("ico_active");
+}
+
+function change_active_tab(tab) {
+    if (active_tab["elem"] != null) {
+        // Toggle last active tab
+        active_tab["elem"].classList.toggle("circle_active");
+        toggle_tab(active_tab["num"]);
+    }
+    
+    if (tab["num"] == active_tab["num"]) {
+        // If toggling the same tab, keep it turned off and mark that no tab is active
+        active_tab = {"num":-1, "elem":null};
+    } else {
+        // Set new active tab and toggle everything for it
+        active_tab = tab;
+        tab["elem"].classList.toggle("circle_active");
+        toggle_tab(tab["num"]);
+    }
+}
+
+function toggle_tab(num) {
+    let page = "page_" + num.toString();
+
+    for (elem of document.getElementsByClassName(page)) {
+        elem.hidden = !elem.hidden;
+    }
 }
 
 function duckduckgoSearch(search_input) {
@@ -98,17 +130,35 @@ function youtubeSearch(search_input) {
     window.location.href = "https://www.youtube.com/results?search_query=" + search_input;
 }
 
-function search(search_input) {
-    active_search_eng["fnc"](search_input)
+function netflixSearch(search_input) {
+    window.location.href = "https://www.netflix.com/search?q=" + search_input;
+}
+
+
+function check_search(search_input) {
+    if (search_input.includes('.') && !search_input.includes(' ')) {
+        if (search_input.includes('http')) {
+            window.location.href = search_input;
+        } else {
+            window.location.href = "https://" + search_input;
+        }
+    } else {
+        active_search_eng["fnc"](search_input);
+    }
 }
 
 function listen_for_search() {
     search_bar.addEventListener("keyup", function(event) {
         // Number 13 is the "Enter" key on the keyboard
         if (event.keyCode === 13) {
-            search(search_bar.value);
+            check_search(search_bar.value);
         }
     }); 
 }
 
+function hyperlink(link) {
+    window.location.href = link;
+}
+
 console.log("Config loaded");
+

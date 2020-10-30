@@ -16,9 +16,10 @@
     <div class="background" id="main_display">
         <div id="header">
             <div id="tab_switcher">
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
+                <div id="default_tab" class="circle circle_active" onclick="change_active_tab({'num':1, 'elem':this})"></div>
+                <div class="circle" onclick="change_active_tab({'num':2, 'elem':this})"></div>
+                <div class="circle" onclick="change_active_tab({'num':3, 'elem':this})"></div>
+                <div class="circle" onclick="change_active_tab({'num':4, 'elem':this})"></div>
             </div>
             <div id="weather">
                 <p id="temperature">000°F</p>
@@ -33,34 +34,110 @@
 
         <div id="pg1_footer" class="page_1">
             <div id="search_options">
-                <img class="small_ico border" src="include/imgs/duckduckgo.png" onclick="change_search_engine({'name':'duckduckgo','fnc':duckduckgoSearch})">
-                <img class="small_ico border" src="include/imgs/youtube.png" onclick="change_search_engine({'name':'youtube','fnc':youtubeSearch})">
+                <img id="default_search" class="small_ico ico_active" src="include/imgs/duckduckgo.png" onclick="change_search_engine({'name':'duckduckgo','fnc':duckduckgoSearch, 'elem':this})">
+                <img class="small_ico" src="include/imgs/youtube.png" onclick="change_search_engine({'name':'youtube','fnc':youtubeSearch, 'elem':this})">
+                <img class="small_ico" src="include/imgs/netflix.png" onclick="change_search_engine({'name':'netflix','fnc':netflixSearch, 'elem':this})">
             </div>
-            <input id="search_bar" placeholder="Search duckduckgo" autofocus>
+            <input id="search_bar" placeholder="Search duckduckgo or paste a link" autofocus>
         </div>
 
-        <!-- <div class="page_2">
+        <div class="page_2" hidden>
             <div id="tables">
                 <div class="column">
-                    <p class="header">Social</p>
-                    <p>
-                        testing
-                    </p>
-                    <p href="https://google.com">
-                        Facebook
-                    </p>
-                    <p href="https://google.com">
-                        Messenger
-                    </p>
+                    <div>
+                        <header class="header">Media</header>
+                        <p href="https://youtube.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Youtube
+                        </p>
+                        <p href="https://twitch.tv" onclick="hyperlink(this.getAttribute('href'))">
+                            Twitch
+                        </p>
+                        <p href="https://netflix.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Netflix
+                        </p>
+                        <p href="https://xfinity.com/stream" onclick="hyperlink(this.getAttribute('href'))">
+                            Xfinity
+                        </p>
+                        <p href="https://hulu.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Hulu
+                        </p>
+                    </div>
+                    <div>
+                        <header class="header">Utility</header>
+                        <p href="https://drive.google.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Google Drive
+                        </p>
+                        <p href="https://mail.google.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Gmail
+                        </p>
+                        <p href="https://calendar.google.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Google Calendar
+                        </p>
+                    </div>
+                    <div>
+                        <header class="header">Social</header>
+                        <p href="https://facebook.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Facebook
+                        </p>
+                        <p href="https://facebook.com/messages" onclick="hyperlink(this.getAttribute('href'))">
+                            Messenger
+                        </p>
+                    </div>
                 </div>
                 <div class="column">
-                    col
+                    <div>
+                        <header class="header">School</header>
+                        <p href="https://piazza.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Piazza
+                        </p>
+                        <p href="https://gradescope.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Gradescope
+                        </p>
+                        <p href="https://canvas.ucsd.edu" onclick="hyperlink(this.getAttribute('href'))">
+                            Canvas
+                        </p>
+                        <p href="https://datahub.ucsd.edu" onclick="hyperlink(this.getAttribute('href'))">
+                            Datahub
+                        </p>
+                    </div>
+                    <div>
+                        <header class="header">Work</header>
+                        <p href="https://outlook.office.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Outlook
+                        </p>
+                        <p href="https://urldefense.com/v3/__https://ucsd.us3.list-manage.com/track/click?u=0fdead76883320832b220bc47&id=2641bef6c4&e=5001715103__;!!Mih3wA!Q2htzOk1hrJPx6FkL49wDD9BW-Ka9f-uD3j-DFTGo2-KylI1LiXcHs_w9SLY7JU2$" onclick="hyperlink(this.getAttribute('href'))">
+                            Ecotime
+                        </p>
+                        <p href="https://3.basecamp.com/3610287/projects" onclick="hyperlink(this.getAttribute('href'))">
+                            Basecamp
+                        </p>
+                        <p href="https://2077.rockstarenergy.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Rockstar2077
+                        </p>
+                        <p href="https://github.com/voytekresearch/flankenstein" onclick="hyperlink(this.getAttribute('href'))">
+                            Flankenstein Github
+                        </p>
+                    </div>
                 </div>
                 <div class="column">
-                    col
+                    <div>
+                        <header class="header">Personal Projects</header>
+                        <p href="https://github.com/codencoding/web-startpage" onclick="hyperlink(this.getAttribute('href'))">
+                            web startpage
+                        </p>
+                        <p href="https://github.com/codencoding/web-startpage-v2" onclick="hyperlink(this.getAttribute('href'))">
+                            web startpage v2
+                        </p>
+                    </div>
+                    <div>
+                        <header class="header">Misc</header>
+                        <p href="https://amazon.com" onclick="hyperlink(this.getAttribute('href'))">
+                            Amazon
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </body>
 
