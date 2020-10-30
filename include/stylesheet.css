@@ -350,7 +350,12 @@ td {
     display: block;
     text-decoration: none;
     color: var(--text_color);
+    filter: brightness(0.6);
     font-size: 12pt;
+}
+
+.column > div > p:hover {
+    filter: brightness(1.0);
 }
 
 div.column > div > p:hover {
