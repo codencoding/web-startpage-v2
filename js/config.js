@@ -15,6 +15,8 @@ function init_elem_refs() {
     search_bar = document.getElementById("search_bar");
     active_search_eng["elem"] = document.getElementById("default_search");
     active_tab["elem"] = document.getElementById("default_tab");
+
+    listen_for_search();
 }
 
 var cookie_raw = document.cookie.split(';');
@@ -48,45 +50,47 @@ function _capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function updateWeather(update) {
-    if (update) {
-        document.cookie = "last_weather_update=" + dt.getTime() + ';'
-    }
-
+function fetch_weather() {
     let key = localStorage.getItem("weather_key");
     let city_id = localStorage.getItem("city_id");
+    let temp;
+    let weather_text;
+    
     fetch(`https://api.openweathermap.org/data/2.5/weather?id=${city_id}&appid=${key}`)
         .then((response) => {
             return response.json()
         })
         .then((data) => {
-            // Work with JSON data here
-            let city_name = data["name"];
             // Find a way to have option for either Celcius or Fahrenheit conversion
-            let temp = Math.round(((data["main"]["temp"]-273.15)*1.8)+32) + "°F";
-            let weather_text = _capitalizeFirstLetter(data["weather"]["0"]["description"]);
+            temp = Math.round(((data["main"]["temp"]-273.15)*1.8)+32) + "°F";
+            weather_text = _capitalizeFirstLetter(data["weather"]["0"]["description"]);
             
-            weather_temp.innerHTML = temp;
-            weather_desc.innerHTML = weather_text;
-
-            localStorage.setItem("city_name", city_name);
+            document.cookie = "last_weather_temp=" + temp.toString();
+            document.cookie = "last_weather_text=" + weather_text;
         })
         .catch((err) => {
             // Do something for an error here
         })
 }
 
-if (("city_id" in localStorage) && ("weather_key" in localStorage)) {
-    // If time since last weather update > 30 seconds, update weather
-    if (dt.getTime() - Number(cookie["last_weather_update"]) > (30*1000)) {
-        updateWeather(true);
-    } else {
-        updateWeather(false);
+function update_weather() {
+    if (dt.getTime() - Number(cookie["last_weather_update"]) < (30*1000)) {
         console.info("Weather has been updated within the last 30 seconds, no need to re-update");
+    } else {
+        fetch_weather();
+        document.cookie = "last_weather_update=" + dt.getTime() + '; SameSite=Strict;'
     }
-    // Auto-update weather every 10 minutes.
-    setInterval(updateWeather, 600000);
+    
+    if (!("city_id" in localStorage) && ("weather_key" in localStorage)) {
+        console.log("city_id and weather_key not found in localStorage, unable to update weather.");
+        return
+    }
+
+    weather_temp.innerHTML = cookie["last_weather_temp"];
+    weather_desc.innerHTML = cookie["last_weather_text"];
 }
+
+setInterval(update_weather, 1000*30);
 
 function change_search_engine(sengine) {
     active_search_eng["elem"].classList.toggle("ico_active");
