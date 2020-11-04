@@ -80,8 +80,8 @@ function fetch_weather() {
             temp = Math.round(((data["main"]["temp"]-273.15)*1.8)+32) + "°F";
             weather_text = _capitalizeFirstLetter(data["weather"]["0"]["description"]);
             
-            document.cookie = "last_weather_temp=" + temp.toString();
-            document.cookie = "last_weather_text=" + weather_text;
+            document.cookie = "last_weather_temp=" + temp.toString() + '; SameSite=Strict;';
+            document.cookie = "last_weather_text=" + weather_text + '; SameSite=Strict;';
         })
         .catch((err) => {
             // Do something for an error here
@@ -204,12 +204,6 @@ function set_theme_color(input_elem) {
     set_variable(var_name, color);
 }
 
-function set_variable(var_name, value) {
-    let root = document.documentElement;
-    
-    root.style.setProperty(var_name, value);
-}
-
 function save_theme_colors(custom_theme) {
     let color_inputs = document.getElementsByClassName("color_input");
     let var_name;
@@ -226,11 +220,11 @@ function save_theme_colors(custom_theme) {
         }
     }
 
-    document.cookie = "theme=" + themes;
+    document.cookie = "theme=" + themes + '; SameSite=Strict;';
     if (custom_theme) {
-        document.cookie = "custom_theme=true";
+        document.cookie = "custom_theme=true" + '; SameSite=Strict;';
     } else {
-        document.cookie = "custom_theme=false";        
+        document.cookie = "custom_theme=false" + '; SameSite=Strict;';        
     }
 }
 
