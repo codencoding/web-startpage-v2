@@ -1,14 +1,9 @@
 :root {
-    /* --bg_color: teal; */
-    --bg_color: rgb(35, 49, 58);
-    /* --primary_color: darkslategrey; */
-    /* --primary_color: #3f3f3f; */
-    --primary_color:  rgb(35, 49, 58);
-    --secondary_color: #212325;
-    /* --tertiary_color: #ff9900; */
-    /* --tertiary_color: #f29636; */
-    --tertiary_color: rgb(218, 66, 66);
-    --text_color: white;
+    --bg_color:#23313a;
+    --primary_color:#23313a;
+    --secondary_color:#212325;
+    --tertiary_color:#da4242;
+    --text_color:#ffffff;
 }
 
 * {
@@ -43,8 +38,7 @@ body {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    /* border: 4px var(--tertiary_color) solid; */
-    border: 4px linear-gradient(to right, red, yellow) solid;
+    /* border: 1px var(--tertiary_color) inset; */
     box-shadow:  6px 6px 4px #000000;
     z-index: 0;
 }
@@ -235,16 +229,23 @@ body {
 }
 
 .circle {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     border-radius: 25px;
     background-color: var(--secondary_color);
     /* margin: 2px; */
     margin-right: 2px;
     float: left;
+    border: 1px var(--tertiary_color) outset;
+    filter: brightness(0.67);
+}
+
+img.circle {
+    border-radius: 10%;
 }
 
 .circle_active {
+    filter: brightness(1);
     background-color: var(--tertiary_color);
     transition: 250ms;
 }
@@ -280,14 +281,6 @@ body {
     background-size: cover;
 }
 
-table:first-child {
-    margin-left: 20px;
-}
-
-table:last-child {
-    margin-right: 20px;
-}
-
 th {
     text-decoration: underline;  
     color: var(--tertiary_color);
@@ -302,11 +295,13 @@ td {
     padding-bottom: 1px;
 }
 
-#tables {
+.custom_table {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    z-index: inherit;
 }
 
 .page_1 {
@@ -314,11 +309,6 @@ td {
     height: 96.5%;
     position: relative;
     z-index: 1;
-}
-
-#tables {
-    position: absolute;
-    z-index: inherit;
 }
 
 .column {
@@ -340,7 +330,7 @@ td {
     margin-right: 20px;
 }
 
-.column > div > a {
+.column > div > *:not(:first-child) {
     display: block;
     text-decoration: none;
     color: var(--text_color);
@@ -348,15 +338,12 @@ td {
     font-size: 12pt;
 }
 
-.column > div > a:hover {
+.column > div > *:not(:first-child):hover {
     filter: brightness(1.0);
-}
-
-div.column > div > p:hover {
     cursor: pointer;
 }
 
-.column > div > .header {
+.header {
     color: var(--tertiary_color);
     text-align: left;
     font-size: 27px;
@@ -378,4 +365,50 @@ div.column > div > p:hover {
     width: 100%;
     height: 528px;
     border-radius: 0px;
+}
+
+.header.settings_header {
+    font-size: 12pt;
+}
+
+.settings_page {
+    width: 100%;
+    height: 96.5%;
+    position: relative;
+    z-index: 1;
+}
+
+.column.settings_col > div {
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.column.settings_col > div > *:not(:first-child) {
+    filter: brightness(1.0);
+}
+
+.column.settings_col > div > *:hover {
+    cursor: default;
+}
+
+.column.settings_col {
+    width: 50%;
+    max-height: 100%;
+    margin-right: 10px;
+}
+
+.settings_col > div > span > input {
+    height: 18px;
+    float: right;
+    border: 1px var(--text_color) solid;
+}
+
+.column.settings_col > div > button {
+    width: 100%;
+    /* left: 50%; */
+    margin-top: 5px;
+    background-color: var(--secondary_color);
+    color: var(--text_color);
+    border: 1px var(--text_color) solid;
+    padding: 5px;
 }

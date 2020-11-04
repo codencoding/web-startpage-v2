@@ -26,6 +26,21 @@ for (var i in cookie_raw) {
   cookie[var_pair[0]] = var_pair[1]
 }
 
+function init_theme() {
+    let var_tup;
+
+    for (elem of cookie["theme"].split(',')) {
+        var_tup = elem.split(':');
+        set_variable(var_tup[0], var_tup[1]);
+    }
+}
+
+if ("theme" in cookie) {
+    if (cookie["custom_theme"] == "true") {
+        init_theme();
+    }
+}
+
 
 function run_clock() {
     let curr_date = dt.toDateString();
@@ -119,7 +134,12 @@ function change_active_tab(tab) {
 }
 
 function toggle_tab(num) {
-    let page = "page_" + num.toString();
+    let page;
+    if (num == 999) {
+        page = "settings_page";
+    } else {
+        page = "page_" + num.toString();
+    }
 
     for (elem of document.getElementsByClassName(page)) {
         elem.hidden = !elem.hidden;
@@ -164,5 +184,72 @@ function hyperlink(link) {
     window.location.href = link;
 }
 
-console.log("Config loaded");
+function load_theme_values() {
+    let var_name;
+    let var_val;
+    let doc_style = getComputedStyle(document.documentElement);
 
+    let input_elems = document.getElementsByClassName("color_input");
+    for (elem of input_elems) {
+        var_name = "--" + elem.parentElement.innerHTML.split(':')[0];
+        var_val = doc_style.getPropertyValue(var_name);
+        elem.value = var_val;
+    }
+}
+
+function set_theme_color(input_elem) {
+    let var_name = "--" + input_elem.parentElement.innerHTML.split(":")[0];
+    let color = input_elem.value;
+
+    set_variable(var_name, color);
+}
+
+function set_variable(var_name, value) {
+    let root = document.documentElement;
+    
+    root.style.setProperty(var_name, value);
+}
+
+function save_theme_colors(custom_theme) {
+    let color_inputs = document.getElementsByClassName("color_input");
+    let var_name;
+    let color_val;
+    let themes = "";
+
+    for (elem of color_inputs) {
+        var_name = "--" + elem.parentElement.innerHTML.split(':')[0];
+        color_val = elem.value;
+        if (elem == color_inputs[color_inputs.length - 1]) {
+            themes += var_name + ':' + color_val;
+        } else {
+            themes += var_name + ':' + color_val + ',';
+        }
+    }
+
+    document.cookie = "theme=" + themes;
+    if (custom_theme) {
+        document.cookie = "custom_theme=true";
+    } else {
+        document.cookie = "custom_theme=false";        
+    }
+}
+
+function set_default_theme() {
+    let default_colors = {
+        "--bg_color":"#23313a",
+        "--primary_color":"#23313a",
+        "--secondary_color":"#212325",
+        "--tertiary_color":"#da4242",
+        "--text_color":"#ffffff"
+    }
+
+    for (var_name in default_colors) {
+        set_variable(var_name, default_colors[var_name]);
+    }
+
+    load_theme_values();
+
+    save_theme_colors(false);
+}
+
+console.log("Config loaded");
