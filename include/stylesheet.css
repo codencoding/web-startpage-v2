@@ -264,29 +264,29 @@ img.circle {
 /* tab switcher tooltips */
 .circle:hover .tab_tooltip {
     position:absolute;
-    top:22px;
+    top:-35px;
     left: -8px;
     padding: 4px;
     display: inline-block;
     border-radius: 4px;
     border: 1px solid var(--tertiary_color);
-    background-color: yellow;
-    color:black;
+    background-color: var(--secondary_color);
+    color:var(--text_color);
 }
 
 .tab_tooltip{
 display:none;
 }
 
-/* creo un quadratino, lo ruoto di 45° e lo posiziono */
+/* small rotated square, to create the tooltip arrow */
 .tab_tooltip:before {
     content: "";
-    background-color: yellow;
-    border-top: 1px solid var(--tertiary_color);;
-    border-left: 1px solid var(--tertiary_color);;
+    background-color: var(--secondary_color);
+    border-bottom: 1px solid var(--tertiary_color);;
+    border-right: 1px solid var(--tertiary_color);;
     border-radius: 2px 0 0;
     position: absolute;
-    top: -6px;
+    bottom: -6px;
     left: 10px;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
