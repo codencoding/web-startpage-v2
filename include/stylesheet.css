@@ -229,6 +229,7 @@ body {
 }
 
 .circle {
+    position: relative;
     width: 14px;
     height: 14px;
     border-radius: 25px;
@@ -258,6 +259,40 @@ img.circle {
     /* background-color: var(--tertiary_color);
     transition: 0.1s; */
     cursor: pointer;
+}
+
+/* tab switcher tooltips */
+.circle:hover .tab_tooltip {
+    position:absolute;
+    top:22px;
+    left: -8px;
+    padding: 4px;
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid var(--tertiary_color);
+    background-color: yellow;
+    color:black;
+}
+
+.tab_tooltip{
+display:none;
+}
+
+/* creo un quadratino, lo ruoto di 45° e lo posiziono */
+.tab_tooltip:before {
+    content: "";
+    background-color: yellow;
+    border-top: 1px solid var(--tertiary_color);;
+    border-left: 1px solid var(--tertiary_color);;
+    border-radius: 2px 0 0;
+    position: absolute;
+    top: -6px;
+    left: 10px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 9px;
+    height: 9px;
 }
 
 .main_bg {
