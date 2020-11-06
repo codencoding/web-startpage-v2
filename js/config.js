@@ -10,6 +10,7 @@ var military_toggle = false;
 var disc_server_id;
 var discord_elem;
 var discord_sid_input;
+var spotify_elem;
 var spot_server_id;
 var spotify_pid_input;
 var spotify_pl_id;
@@ -37,8 +38,8 @@ function init_elem_refs() {
         discord_sid_input.placeholder = cookie["disc_server_id"];
     }
     spotify_pid_input = document.getElementsByClassName("spotify settings_text_input")[0];
-    if ("sptfy_pl_id" in cookie) {
-        spotify_pid_input.placeholder = cookie["sptfy_pl_id"];
+    if ("spotify_pl_id" in cookie) {
+        spotify_pid_input.placeholder = cookie["spotify_pl_id"];
     }
 
     listen_for_search();
@@ -75,8 +76,8 @@ if ("disc_server_id" in cookie) {
     disc_server_id = cookie["disc_server_id"];
 }
 
-if ("sptfy_pl_id" in cookie) {
-    sptfy_pl_id = cookie["sptfy_pl_id"];
+if ("spotify_pl_id" in cookie) {
+    spotify_pl_id = cookie["spotify_pl_id"];
 }
 
 function toggle_military_time() {
@@ -111,9 +112,9 @@ function change_spotify_playlist() {
         spotify_elem.parentElement.removeChild(spotify_elem);
     }
 
-    document.cookie = "sptfy_pl_id=" + spotify_pid_input.value + "; SameSite=Strict;";
+    document.cookie = "spotify_pl_id=" + spotify_pid_input.value + "; SameSite=Strict;";
     spotify_pl_id = spotify_pid_input.value;
-    cookie["sptfy_pl_id"] = spotify_pl_id;
+    cookie["spotify_pl_id"] = spotify_pl_id;
 
     add_spotify();
 }
@@ -347,17 +348,28 @@ function add_discord() {
 
 function add_spotify() {
     let spot_elem = document.createElement("iframe");
-    spot_elem.src="https://open.spotify.com/embed/playlist/" + sptfy_pl_id;
+    spot_elem.src="https://open.spotify.com/embed/playlist/" + spotify_pl_id;
     spot_elem.allowtransparency="true";
     spot_elem.frameborder="0";
     spot_elem.allow="encrypted-media";
 
-    spotify_pid_input.placeholder = sptfy_pl_id;
+    spotify_pid_input.placeholder = spotify_pl_id;
 
     let page_4 = document.getElementsByClassName("page_4")[0];
 
     page_4.appendChild(spot_elem);
     spotify_elem = spot_elem;
 }
+
+// Doesn't work to my knowledge
+// function add_calendar() {
+//     let cal_elem = document.createElement("iframe");
+//     cal_elem.src="https://calendar.google.com/calendar/embed?height=500&amp;wkst=1&amp;bgcolor=%23202225&amp;ctz=America%2FLos_Angeles&amp;src=Y29kZW5AdWNzZC5lZHU&amp;src=dWNzZC5lZHVfc2E0MWNlNXU3ZGFiamp2aGg3azlmdXBwN3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfY2g4bG9yaW80bjBubXQ1YTZ0OXBnbDBqazBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=dWNzZC5lZHVfcDJyMHFwdjRhcXFyc2Q3aXR2OGFzaW1hbnNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfMWo3dmx1cnQwbmMwZDhsZGVsdmQxZ2NqbjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfZ2FrMHJuMG84czFwdG1pZXV0ZHQzajR2cmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfZnVwZnZodDRrY2NkbGY1cGVrMWRwMzdxNm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfZ2RwZjBmcTdoNzZnYTM3OGdkYmVxdjk2YXNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfdGJ0dHRoOG5hMDg1cG5ybHF2M3J2YXVnODRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW5nLnVjc2QuZWR1XzlzYThzMHZvY2duMGptZG50amk2aGlpN2VnQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%239E69AF&amp;color=%23616161&amp;color=%2333B679&amp;color=%23cc00c9&amp;color=%23F09300&amp;color=%230B8043&amp;color=%237CB342&amp;color=%23D50000&amp;color=%2300ccc6&amp;color=%23E4C441&amp;showTitle=0&amp;showNav=1&amp;showDate=0&amp;showPrint=0&amp;mode=AGENDA&amp;showTz=0&amp;showCalendars=1&amp;showTabs=0";
+//     cal_elem.width="320";
+//     cal_elem.height="500";
+//     cal_elem.frameborder="0";
+//     cal_elem.scrolling="no";
+//     document.body.appendChild(cal_elem);
+// }
 
 console.log("Config loaded");
