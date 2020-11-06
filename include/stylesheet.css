@@ -229,14 +229,14 @@ body {
 }
 
 .circle {
-    position: relative;
+    /* position: relative; */
     width: 14px;
     height: 14px;
     border-radius: 25px;
     background-color: var(--secondary_color);
     /* margin: 2px; */
     margin-right: 2px;
-    float: left;
+    /* float: left; */
     border: 1px var(--tertiary_color) outset;
     filter: brightness(0.67);
 }
@@ -251,7 +251,8 @@ img.circle {
     transition: 250ms;
 }
 
-.circle:first-child {
+/* .circle:first-child { */
+#default_tab {
     margin-left: 5px;
 }
 
@@ -262,7 +263,7 @@ img.circle {
 }
 
 /* tab switcher tooltips */
-.circle:hover .tab_tooltip {
+.circle:hover + .tab_tooltip {
     position:absolute;
     top:-35px;
     left: -8px;
@@ -272,6 +273,11 @@ img.circle {
     border: 1px solid var(--tertiary_color);
     background-color: var(--secondary_color);
     color:var(--text_color);
+}
+
+.tab_wrapper{
+    position:relative;
+    float:left;
 }
 
 .tab_tooltip{
