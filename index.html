@@ -17,16 +17,20 @@
     <div class="background" id="main_display">
         <div id="header">
             <div id="tab_switcher">
-                <div id="default_tab" class="circle circle_active" onclick="change_active_tab({'num':1, 'elem':this})">
+                <div class="tab_wrapper">
+                    <div id="default_tab" class="circle circle_active" onclick="change_active_tab({'num':1, 'elem':this})"></div>
                     <div class="tab_tooltip"><strong>Links</strong></div>
                 </div>
-                <div class="circle" onclick="change_active_tab({'num':2, 'elem':this})">
+                <div class="tab_wrapper">
+                    <div class="circle" onclick="change_active_tab({'num':2, 'elem':this})"></div>
                     <div class="tab_tooltip"><strong>Discord</strong></div>
                 </div>
-                <div class="circle" onclick="change_active_tab({'num':3, 'elem':this})">
+                <div class="tab_wrapper">
+                    <div class="circle" onclick="change_active_tab({'num':3, 'elem':this})"></div>
                     <div class="tab_tooltip"><strong>Calendar</strong></div>
                 </div>
-                <div class="circle" onclick="change_active_tab({'num':4, 'elem':this})">
+                <div class="tab_wrapper">
+                    <div class="circle" onclick="change_active_tab({'num':4, 'elem':this})"></div>
                     <div class="tab_tooltip"><strong>Spotify</strong></div>
                 </div>
                 <img src="include/imgs/small_settings_light.png" class="circle" onclick="change_active_tab({'num':999, 'elem':this})">
