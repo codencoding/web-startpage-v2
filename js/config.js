@@ -6,6 +6,7 @@ var search_bar;
 var dt = new Date();
 var active_search_eng = {"name":"duckduckgo","fnc":duckduckgoSearch, "elem":null};
 var active_tab = {"num":1, "elem":null};
+var military_toggle = false;
 
 function init_elem_refs() {
     time_elem = document.getElementById("time");
@@ -41,10 +42,24 @@ if ("theme" in cookie) {
     }
 }
 
+if ("military_toggle" in cookie) {
+    military_toggle = cookie["military_toggle"];
+}
+
+function toggle_military_time() {
+    if ("military_toggle" in cookie) {
+        delete_cookie("military_toggle");
+    } else {
+        document.cookie = "military_toggle=true; SameSite=Strict;";
+    }
+
+    military_toggle = !military_toggle;
+    run_clock();
+}
 
 function run_clock() {
     let curr_date = dt.toDateString();
-    let curr_time = dt.toLocaleTimeString();
+    let curr_time = dt.toLocaleTimeString('en-US', { hour12: military_toggle });
 
     if (curr_date != date_elem.innerHTML) {
         date_elem.innerHTML = curr_date;
