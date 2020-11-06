@@ -7,9 +7,22 @@ var dt = new Date();
 var active_search_eng = {"name":"duckduckgo","fnc":duckduckgoSearch, "elem":null};
 var active_tab = {"num":1, "elem":null};
 var military_toggle = false;
-var disc_server_id = "106615501169377280";
+var disc_server_id;
 var discord_elem;
 var discord_sid_input;
+var spot_server_id;
+var spotify_pid_input;
+var spotify_pl_id;
+
+
+function init_page() {
+    init_elem_refs();
+    run_clock();
+    update_weather();
+    load_theme_values();
+    add_discord();
+    add_spotify();
+}
 
 function init_elem_refs() {
     time_elem = document.getElementById("time");
@@ -20,6 +33,13 @@ function init_elem_refs() {
     active_search_eng["elem"] = document.getElementById("default_search");
     active_tab["elem"] = document.getElementById("default_tab");
     discord_sid_input = document.getElementsByClassName("discord settings_text_input")[0];
+    if ("disc_server_id" in cookie) {
+        discord_sid_input.placeholder = cookie["disc_server_id"];
+    }
+    spotify_pid_input = document.getElementsByClassName("spotify settings_text_input")[0];
+    if ("sptfy_pl_id" in cookie) {
+        spotify_pid_input.placeholder = cookie["sptfy_pl_id"];
+    }
 
     listen_for_search();
 }
@@ -55,6 +75,21 @@ if ("disc_server_id" in cookie) {
     disc_server_id = cookie["disc_server_id"];
 }
 
+if ("sptfy_pl_id" in cookie) {
+    sptfy_pl_id = cookie["sptfy_pl_id"];
+}
+
+function toggle_military_time() {
+    if ("military_toggle" in cookie) {
+        delete_cookie("military_toggle");
+    } else {
+        document.cookie = "military_toggle=true; SameSite=Strict;";
+    }
+
+    military_toggle = !military_toggle;
+    run_clock();
+}
+
 function change_discord_src() {
     if (discord_elem == null) {
         console.error("Discord element not yet loaded. Adding new element.");
@@ -69,17 +104,19 @@ function change_discord_src() {
     add_discord();
 }
 
-function toggle_military_time() {
-    if ("military_toggle" in cookie) {
-        delete_cookie("military_toggle");
+function change_spotify_playlist() {
+    if (spotify_elem == null) {
+        console.error("Spotify element not yet loaded. Adding new element.");
     } else {
-        document.cookie = "military_toggle=true; SameSite=Strict;";
+        spotify_elem.parentElement.removeChild(spotify_elem);
     }
 
-    military_toggle = !military_toggle;
-    run_clock();
-}
+    document.cookie = "sptfy_pl_id=" + spotify_pid_input.value + "; SameSite=Strict;";
+    spotify_pl_id = spotify_pid_input.value;
+    cookie["sptfy_pl_id"] = spotify_pl_id;
 
+    add_spotify();
+}
 
 function run_clock() {
     let curr_date = dt.toDateString();
@@ -300,10 +337,27 @@ function add_discord() {
     disc_elem.frameborder="0";
     disc_elem.sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts";
 
+    discord_sid_input.placeholder = disc_server_id;
+
     let page_2 = document.getElementsByClassName("page_2")[0];
 
     page_2.appendChild(disc_elem);
     discord_elem = disc_elem;
+}
+
+function add_spotify() {
+    let spot_elem = document.createElement("iframe");
+    spot_elem.src="https://open.spotify.com/embed/playlist/" + sptfy_pl_id;
+    spot_elem.allowtransparency="true";
+    spot_elem.frameborder="0";
+    spot_elem.allow="encrypted-media";
+
+    spotify_pid_input.placeholder = sptfy_pl_id;
+
+    let page_4 = document.getElementsByClassName("page_4")[0];
+
+    page_4.appendChild(spot_elem);
+    spotify_elem = spot_elem;
 }
 
 console.log("Config loaded");
