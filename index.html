@@ -10,7 +10,7 @@
     <script src="js/utils.js"></script>
 </head>
 
-<body onload="init_elem_refs(); run_clock(); update_weather(); load_theme_values();">
+<body onload="init_elem_refs(); run_clock(); update_weather(); load_theme_values(); add_discord();">
     <div class="background main_bg"></div>
     
     </div>
@@ -153,7 +153,7 @@
         </div>
 
         <div class="page_2" hidden>
-            <iframe src="https://discord.com/widget?id=106615501169377280&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            <!-- <iframe src="https://discord.com/widget?id=106615501169377280&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe> -->
         </div>
 
         <div class="page_3" hidden>
@@ -191,8 +191,9 @@
                         <p>TODO</p>
                     </div>
                     <div>
-                        <header class="header settings_header">Source discord link</header>
-                        <p>TODO</p>
+                        <header class="header settings_header">Change discord server</header>
+                        <span>Discord server id:<input class="discord settings_text_input" type="text"></span>
+                        <button onclick="change_discord_src()">Change server</button>
                     </div>
                     <div>
                         <header class="header settings_header">Source google calendar link</header>

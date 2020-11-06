@@ -7,6 +7,9 @@ var dt = new Date();
 var active_search_eng = {"name":"duckduckgo","fnc":duckduckgoSearch, "elem":null};
 var active_tab = {"num":1, "elem":null};
 var military_toggle = false;
+var disc_server_id = "106615501169377280";
+var discord_elem;
+var discord_sid_input;
 
 function init_elem_refs() {
     time_elem = document.getElementById("time");
@@ -16,6 +19,7 @@ function init_elem_refs() {
     search_bar = document.getElementById("search_bar");
     active_search_eng["elem"] = document.getElementById("default_search");
     active_tab["elem"] = document.getElementById("default_tab");
+    discord_sid_input = document.getElementsByClassName("discord settings_text_input")[0];
 
     listen_for_search();
 }
@@ -42,8 +46,27 @@ if ("theme" in cookie) {
     }
 }
 
+
 if ("military_toggle" in cookie) {
     military_toggle = cookie["military_toggle"];
+}
+
+if ("disc_server_id" in cookie) {
+    disc_server_id = cookie["disc_server_id"];
+}
+
+function change_discord_src() {
+    if (discord_elem == null) {
+        console.error("Discord element not yet loaded. Adding new element.");
+    } else {
+        discord_elem.parentElement.removeChild(discord_elem);
+    }
+
+    document.cookie = "disc_server_id=" + discord_sid_input.value + "; SameSite=Strict;";
+    disc_server_id = discord_sid_input.value;
+    cookie["disc_server_id"] = disc_server_id;
+
+    add_discord();
 }
 
 function toggle_military_time() {
@@ -56,6 +79,7 @@ function toggle_military_time() {
     military_toggle = !military_toggle;
     run_clock();
 }
+
 
 function run_clock() {
     let curr_date = dt.toDateString();
@@ -266,5 +290,20 @@ function set_variable(var_name, value) {
     
     root.style.setProperty(var_name, value);
   }
+
+function add_discord() {
+    let disc_elem = document.createElement("iframe");
+    disc_elem.src="https://discord.com/widget?id=" + disc_server_id + "&theme=dark";
+    disc_elem.width="350";
+    disc_elem.height="500";
+    disc_elem.allowtransparency="true";
+    disc_elem.frameborder="0";
+    disc_elem.sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts";
+
+    let page_2 = document.getElementsByClassName("page_2")[0];
+
+    page_2.appendChild(disc_elem);
+    discord_elem = disc_elem;
+}
 
 console.log("Config loaded");
