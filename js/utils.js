@@ -1,9 +1,3 @@
-function set_variable(var_name, value) {
-  let root = document.documentElement;
-  
-  root.style.setProperty(var_name, value);
-}
-
 function delete_cookie( name, path, domain ) {
   if( get_cookie( name ) ) {
     document.cookie = name + "=" +

@@ -246,4 +246,10 @@ function set_default_theme() {
     save_theme_colors(false);
 }
 
+function set_variable(var_name, value) {
+    let root = document.documentElement;
+    
+    root.style.setProperty(var_name, value);
+  }
+
 console.log("Config loaded");
