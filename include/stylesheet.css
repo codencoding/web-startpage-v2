@@ -251,11 +251,6 @@ img.circle {
     transition: 250ms;
 }
 
-/* .circle:first-child { */
-#default_tab {
-    margin-left: 5px;
-}
-
 .circle:hover {
     /* background-color: var(--tertiary_color);
     transition: 0.1s; */
@@ -278,6 +273,10 @@ img.circle {
 .tab_wrapper{
     position:relative;
     float:left;
+}
+
+.tab_wrapper:first-child{
+    margin-left:5px;
 }
 
 .tab_tooltip{
