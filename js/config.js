@@ -14,6 +14,8 @@ var spotify_elem;
 var spot_server_id;
 var spotify_pid_input;
 var spotify_pl_id;
+var weather_key_input;
+var weather_interval = setInterval(update_weather, 1000*30);
 
 
 function init_page() {
@@ -41,6 +43,7 @@ function init_elem_refs() {
     if ("spotify_pl_id" in cookie) {
         spotify_pid_input.placeholder = cookie["spotify_pl_id"];
     }
+    weather_key_input = document.getElementsByClassName("weather settings_text_input")[0];
 
     listen_for_search();
 }
@@ -119,6 +122,12 @@ function change_spotify_playlist() {
     add_spotify();
 }
 
+function change_weather_key() {
+    localStorage.setItem("weather_key", weather_key_input.value);
+    update_weather(force=true);
+    weather_interval = setInterval(update_weather, 1000*30);
+}
+
 function run_clock() {
     let curr_date = dt.toDateString();
     let curr_time = dt.toLocaleTimeString('en-US', { hour12: military_toggle });
@@ -157,32 +166,38 @@ function fetch_weather() {
             temp = Math.round(((data["main"]["temp"]-273.15)*1.8)+32) + "°F";
             weather_text = _capitalizeFirstLetter(data["weather"]["0"]["description"]);
             
+            cookie["last_weather_temp"] = temp.toString();
+            cookie["last_weather_text"] = weather_text;
             document.cookie = "last_weather_temp=" + temp.toString() + '; SameSite=Strict;';
             document.cookie = "last_weather_text=" + weather_text + '; SameSite=Strict;';
         })
         .catch((err) => {
             // Do something for an error here
+            console.error("Unable to fetch weather; city_id or weather_key is invalid.");
+            clearInterval(weather_interval);
+            cookie["last_weather_temp"] = "Temp";
+            cookie["last_weather_text"] = "Weather description";
+            document.cookie = "last_weather_temp=Temp" + '; SameSite=Strict;';
+            document.cookie = "last_weather_text=Weather description" + '; SameSite=Strict;';
         })
 }
 
-function update_weather() {
-    if (dt.getTime() - Number(cookie["last_weather_update"]) < (30*1000)) {
-        console.info("Weather has been updated within the last 30 seconds, no need to re-update");
-    } else {
-        fetch_weather();
-        document.cookie = "last_weather_update=" + dt.getTime() + '; SameSite=Strict;'
-    }
-    
+function update_weather(force=false) {
     if (!("city_id" in localStorage) && ("weather_key" in localStorage)) {
         console.log("city_id and weather_key not found in localStorage, unable to update weather.");
         return
     }
 
+    if ((dt.getTime() - Number(cookie["last_weather_update"]) < (30*1000)) && !force) {
+        console.info("Weather has been updated within the last 30 seconds, no need to re-update");
+    } else {
+        fetch_weather();
+    }
+    document.cookie = "last_weather_update=" + dt.getTime() + '; SameSite=Strict;'
+
     weather_temp.innerHTML = cookie["last_weather_temp"];
     weather_desc.innerHTML = cookie["last_weather_text"];
 }
-
-setInterval(update_weather, 1000*30);
 
 function change_search_engine(sengine) {
     active_search_eng["elem"].classList.toggle("ico_active");
