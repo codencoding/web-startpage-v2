@@ -92,6 +92,8 @@ function toggle_military_time() {
 
     military_toggle = !military_toggle;
     run_clock();
+    settings_changed_popup();
+
 }
 
 function change_discord_src() {
@@ -106,6 +108,8 @@ function change_discord_src() {
     cookie["disc_server_id"] = disc_server_id;
 
     add_discord();
+    settings_changed_popup();
+
 }
 
 function change_spotify_playlist() {
@@ -120,6 +124,8 @@ function change_spotify_playlist() {
     cookie["spotify_pl_id"] = spotify_pl_id;
 
     add_spotify();
+    settings_changed_popup();
+
 }
 
 function change_weather_key() {
@@ -318,6 +324,9 @@ function save_theme_colors(custom_theme) {
     } else {
         document.cookie = "custom_theme=false" + '; SameSite=Strict;';        
     }
+
+    settings_changed_popup();
+
 }
 
 function set_default_theme() {
@@ -336,6 +345,20 @@ function set_default_theme() {
     load_theme_values();
 
     save_theme_colors(false);
+
+    settings_changed_popup();
+}
+
+function settings_changed_popup() {
+  let popup = document.getElementById("settings_changed");
+
+  // run the animation only if it is not already running
+  if (!popup.classList.contains("popup_animation")) {
+    popup.classList.add("popup_animation");
+    setTimeout(function () {
+      popup.classList.remove("popup_animation");
+    }, 2000);
+  }
 }
 
 function set_variable(var_name, value) {
