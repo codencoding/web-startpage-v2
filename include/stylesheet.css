@@ -44,17 +44,10 @@ body {
     z-index: 0;
 }
 
-/* @media ((max-width: 500px) or (max-height: 500px)) {
+@media screen and (max-width: 500px), (max-height: 500px) {
     #main_display {
-        max-width: 97vh;
-        max-height: 97vh;
-    }
-} */
-
-@media screen and (max-width: 600px), (max-height: 600px) {
-    #main_display {
-        width: 90vh;
-        height: 86vh;
+        width: 97vh;
+        height: 97vh;
     }
 }
 

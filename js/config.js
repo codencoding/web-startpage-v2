@@ -132,6 +132,9 @@ function change_weather_key() {
     localStorage.setItem("weather_key", weather_key_input.value);
     update_weather(force=true);
     weather_interval = setInterval(update_weather, 1000*30);
+
+    settings_changed_popup();
+
 }
 
 function run_clock() {
