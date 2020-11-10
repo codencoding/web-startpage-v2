@@ -20,6 +20,7 @@ html, body {
 }
 
 body {
+    position:relative;
     min-width: 510px;
     min-height: 510px;
 }
@@ -27,8 +28,8 @@ body {
 #main_display {
     background-color: var(--primary_color);
     /* background-image: url("imgs/center_images/1602608434583.jpg"); */
-    width: 97vw;
-    height: 97vw;
+    /* width: 97vw;
+    height: 97vw; */
     min-width: 370px;
     min-height: 370px;
     max-width: 550px;
@@ -43,10 +44,10 @@ body {
     z-index: 0;
 }
 
-@media ((max-width: 500px) or (max-height: 500px)) {
+@media screen and (max-width: 500px), (max-height: 500px) {
     #main_display {
-        max-width: 97vh;
-        max-height: 97vh;
+        width: 97vh;
+        height: 97vh;
     }
 }
 
@@ -314,7 +315,7 @@ display:none;
 
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -10;
 
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -476,3 +477,88 @@ input.settings_text_input {
 .column.settings_col > div > span {
     height: 20px;
 }
+
+/* 'Setting Changed' Popup */
+.popup {
+    position: absolute;
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: var(--primary_color);
+    color: var(--tertiary_color);
+    border-radius: 5px;
+    border:2px solid var(--tertiary_color);
+    padding: 2px;
+    text-align: center;
+    top: calc(50% - 240px);
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: -5; 
+}
+
+.popup_animation {
+    animation: popup-up-and-down 2s forwards;
+}
+
+.visibility {
+    opacity: 0;
+}
+
+
+/* change the popup animation for smaller devices */
+@media screen and (max-height:600px), (max-width:570px){
+    .popup {
+        top: 50%;  /* popup placed in the middle of the screen */
+        z-index: 5; /* popup stack over anything else */
+    }
+    .popup_animation {
+        animation: popup-fadein-fadeout 2s forwards;
+    }
+
+}
+
+/* go up and down */
+@keyframes popup-up-and-down {
+    0% {
+        opacity: 1;
+        left: 50%;
+        top: calc(50% - 240px);
+    }
+
+    25% {
+        opacity: 1;
+        left: 50%;
+        top: calc(50% - 275px - 25px);
+        
+    }
+    75% {
+        opacity: 1;
+        left: 50%;
+        top: calc(50% - 275px - 25px);
+        
+    }
+    100% {
+        opacity: 1;
+        left: 50%;
+        top: calc(50% - 240px);
+    }
+}
+
+
+/* fade-in fade-out */
+@keyframes popup-fadein-fadeout {
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
