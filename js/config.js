@@ -16,6 +16,7 @@ var spotify_pid_input;
 var spotify_pl_id;
 var weather_key_input;
 var weather_interval = setInterval(update_weather, 1000*30);
+var search_icos = document.getElementsByClassName("search_ico");
 
 
 function init_page() {
@@ -24,7 +25,7 @@ function init_page() {
     update_weather();
     load_theme_values();
     add_discord();
-    add_spotify();
+    // add_spotify();
 }
 
 function init_elem_refs() {
@@ -45,7 +46,7 @@ function init_elem_refs() {
     }
     weather_key_input = document.getElementsByClassName("weather settings_text_input")[0];
 
-    listen_for_search();
+    add_search_listeners();
 }
 
 var cookie_raw = document.cookie.split(';');
@@ -148,13 +149,12 @@ function run_clock() {
 
     dt = new Date();
 }
+setInterval(run_clock, 1000);
 
 function run_weather_desc() {
     weather_desc.classList.toggle("paused");
     weather_desc.classList.toggle("running");
 }
-
-setInterval(run_clock, 1000);
 
 function _capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -272,13 +272,17 @@ function check_search(search_input) {
     }
 }
 
-function listen_for_search() {
+function add_search_listeners() {
     search_bar.addEventListener("keyup", function(event) {
         // Number 13 is the "Enter" key on the keyboard
         if (event.keyCode === 13) {
             check_search(search_bar.value);
         }
     }); 
+
+    search_bar.addEventListener("onchange", function(event) {
+        
+    })
 }
 
 function hyperlink(link) {
