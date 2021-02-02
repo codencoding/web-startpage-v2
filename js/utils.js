@@ -12,3 +12,13 @@ function get_cookie(name){
         return c.trim().startsWith(name + '=');
     });
 }
+
+function hyperlink(link) {
+  window.location.href = link;
+}
+
+function set_variable(var_name, value) {
+  let root = document.documentElement;
+  
+  root.style.setProperty(var_name, value);
+}

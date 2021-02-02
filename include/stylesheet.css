@@ -77,9 +77,13 @@ a.list-group-item:hover {
 }
 
 .img-thumb {
-    width: 55px;
+    width: 35px;
 }
 
 .bg-discord {
     background-color: #7289da;
+}
+
+#time {
+    cursor: pointer;
 }

@@ -12,11 +12,11 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     
-    <!-- <script src="js/config.js"></script> -->
-    <!-- <script src="js/utils.js"></script> -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
 </head>
 
-<body>
+<body onload="init_page();">
     <div id="full-bg" class="bg-cover h-100 w-100 align-items-center justify-content-center row m-0">
         <div id="center-window" class="bg-dark p-0">
             <div id="window-header" class="row py-1 m-0 align-items-center">
@@ -30,15 +30,20 @@
                 </ul>
                 <div class="col text-white">
                     <div class="row p-0 m-0">
-                        <p class="my-0 p-0 justify-content-between">
-                            Tue Feb 02 2021
-                            <span class="m-0 p-0 float-end">
-                                12:42:43 PM
+                        <p class="m-0 p-0">
+                            <span id="date" class="m-0 p-0">
+                                Date
+                            </span>
+                            <span id="time" class="m-0 p-0 float-end" onclick="toggle_military_time();">
+                                Time
                             </span>
                         </p>
                     </div>
                     <div class="row p-0 m-0">
-                        <p class="my-0 p-0 border-top border-danger text-right">58°F Overcast clouds</p>
+                        <p class="my-0 p-0 border-top border-danger">
+                            <span id="temperature" class="my-0 p-0 pe-2">Temp</span>
+                            <span id="weather-desc" class="my-0 p-0 text-right">Temp description</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -87,8 +92,8 @@
                             <div class="col-sm mx-2">
                                 <div class="list-group list-group-flush bg-dark p-0 rounded mt-2">
                                     <h3 class="p-1 border-bottom border-danger m-0">Projects</h3>
-                                    <a href="https://github.com/codencoding/web-startpage" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">web startpage</a>
-                                    <a href="https://github.com/codencoding/web-startpage-v2" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">web startpage v2</a>
+                                    <a href="https://github.com/codencoding/web-startpage" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Web Startpage</a>
+                                    <a href="https://github.com/codencoding/web-startpage-v2" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Web Startpage V2</a>
                                     <a href="https://github.com/codencoding/codencoding.github.io" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Personal Portfolio</a>
                                 </div>
                                 <div class="list-group list-group-flush bg-dark p-0 rounded mt-2">
@@ -110,10 +115,20 @@
                 </div>
             </div>
             <div class="input-group mb-2 pb-6 px-4 fixed-bottom">
-                <button class="btn btn-outline-secondary bg-dark img-thumb" type="button"><img class="img-fluid" src="include/imgs/duckduckgo.png" alt="DuckDuckGo"></button>
-                <button class="btn btn-outline-secondary bg-dark img-thumb" type="button"><img class="img-fluid" src="include/imgs/youtube.png" alt="DuckDuckGo"></button>
-                <button class="btn btn-outline-secondary bg-dark img-thumb" type="button"><img class="img-fluid" src="include/imgs/netflix.png" alt="DuckDuckGo"></button>
-                <input type="text" class="form-control bg-dark text-light border-secondary" placeholder="Search here..." aria-label="Search" autofocus>
+                <div class="btn-group" role="group" aria-label="Search bar toggle group">
+                    <!-- <button class="btn btn-outline-secondary bg-dark img-thumb" type="button" aria-current="page"><img class="img-fluid" src="include/imgs/duckduckgo.png" alt="DuckDuckGo"></button>
+                    <button class="btn btn-outline-secondary bg-dark img-thumb" type="button"><img class="img-fluid" src="include/imgs/youtube.png" alt="DuckDuckGo"></button>
+                    <button class="btn btn-outline-secondary bg-dark img-thumb" type="button"><img class="img-fluid" src="include/imgs/netflix.png" alt="DuckDuckGo"></button> -->
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                    <label class="btn btn-dark btn-outline-secondary" for="btnradio1"><img class="pt-1 img-thumb p-0 m-0" src="include/imgs/duckduckgo.png" alt="DuckDuckGo"></label>
+                    
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-dark btn-outline-secondary" for="btnradio2"><img class="pt-1 img-thumb p-0 m-0" src="include/imgs/youtube.png" alt="Youtube"></label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                    <label class="btn btn-dark btn-outline-secondary rounded-0" for="btnradio3"><img class="img-thumb p-0 m-0" src="include/imgs/netflix.png" alt="Netflix"></label>
+                </div>
+                <input id="search-bar" type="text" class="form-control bg-dark text-light border-secondary" placeholder="Search here..." aria-label="Search" autofocus>
             </div>
         </div>
     </div>

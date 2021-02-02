@@ -5,7 +5,6 @@ var weather_desc;
 var search_bar;
 var dt = new Date();
 var active_search_eng = {"name":"duckduckgo","fnc":duckduckgoSearch, "elem":null};
-var active_tab = {"num":1, "elem":null};
 var military_toggle = false;
 var disc_server_id;
 var discord_elem;
@@ -23,28 +22,27 @@ function init_page() {
     init_elem_refs();
     run_clock();
     update_weather();
-    load_theme_values();
-    add_discord();
+    // load_theme_values();
+    // add_discord();
     // add_spotify();
 }
 
 function init_elem_refs() {
     time_elem = document.getElementById("time");
     date_elem = document.getElementById("date");
-    weather_desc = document.getElementById("weather_desc");
+    weather_desc = document.getElementById("weather-desc");
     weather_temp = document.getElementById("temperature");
-    search_bar = document.getElementById("search_bar");
+    search_bar = document.getElementById("search-bar");
     active_search_eng["elem"] = document.getElementById("default_search");
-    active_tab["elem"] = document.getElementById("default_tab");
-    discord_sid_input = document.getElementsByClassName("discord settings_text_input")[0];
-    if ("disc_server_id" in cookie) {
-        discord_sid_input.placeholder = cookie["disc_server_id"];
-    }
-    spotify_pid_input = document.getElementsByClassName("spotify settings_text_input")[0];
-    if ("spotify_pl_id" in cookie) {
-        spotify_pid_input.placeholder = cookie["spotify_pl_id"];
-    }
-    weather_key_input = document.getElementsByClassName("weather settings_text_input")[0];
+    // discord_sid_input = document.getElementsByClassName("discord settings_text_input")[0];
+    // if ("disc_server_id" in cookie) {
+    //     discord_sid_input.placeholder = cookie["disc_server_id"];
+    // }
+    // spotify_pid_input = document.getElementsByClassName("spotify settings_text_input")[0];
+    // if ("spotify_pl_id" in cookie) {
+    //     spotify_pid_input.placeholder = cookie["spotify_pl_id"];
+    // }
+    // weather_key_input = document.getElementsByClassName("weather settings_text_input")[0];
 
     add_search_listeners();
 }
@@ -56,45 +54,34 @@ for (var i in cookie_raw) {
   cookie[var_pair[0]] = var_pair[1]
 }
 
-function init_theme() {
-    let var_tup;
-
-    for (elem of cookie["theme"].split(',')) {
-        var_tup = elem.split(':');
-        set_variable(var_tup[0], var_tup[1]);
-    }
-}
-
-if ("theme" in cookie) {
-    if (cookie["custom_theme"] == "true") {
-        init_theme();
-    }
-}
-
+// if ("theme" in cookie) {
+//     if (cookie["custom_theme"] == "true") {
+//         init_theme();
+//     }
+// }
 
 if ("military_toggle" in cookie) {
     military_toggle = cookie["military_toggle"];
 }
 
-if ("disc_server_id" in cookie) {
-    disc_server_id = cookie["disc_server_id"];
-}
+// if ("disc_server_id" in cookie) {
+//     disc_server_id = cookie["disc_server_id"];
+// }
 
-if ("spotify_pl_id" in cookie) {
-    spotify_pl_id = cookie["spotify_pl_id"];
-}
+// if ("spotify_pl_id" in cookie) {
+//     spotify_pl_id = cookie["spotify_pl_id"];
+// }
 
 function toggle_military_time() {
     if ("military_toggle" in cookie) {
         delete_cookie("military_toggle");
     } else {
-        document.cookie = "military_toggle=true; SameSite=Strict;";
+        document.cookie = "military_toggle=true; SameSite=Strict; Secure";
     }
 
     military_toggle = !military_toggle;
     run_clock();
-    settings_changed_popup();
-
+    // settings_changed_popup();
 }
 
 function change_discord_src() {
@@ -150,11 +137,6 @@ function run_clock() {
     dt = new Date();
 }
 setInterval(run_clock, 1000);
-
-function run_weather_desc() {
-    weather_desc.classList.toggle("paused");
-    weather_desc.classList.toggle("running");
-}
 
 function _capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -216,37 +198,6 @@ function change_search_engine(sengine) {
     sengine["elem"].classList.toggle("ico_active");
 }
 
-function change_active_tab(tab) {
-    if (active_tab["elem"] != null) {
-        // Toggle last active tab
-        active_tab["elem"].classList.toggle("circle_active");
-        toggle_tab(active_tab["num"]);
-    }
-    
-    if (tab["num"] == active_tab["num"]) {
-        // If toggling the same tab, keep it turned off and mark that no tab is active
-        active_tab = {"num":-1, "elem":null};
-    } else {
-        // Set new active tab and toggle everything for it
-        active_tab = tab;
-        tab["elem"].classList.toggle("circle_active");
-        toggle_tab(tab["num"]);
-    }
-}
-
-function toggle_tab(num) {
-    let page;
-    if (num == 999) {
-        page = "settings_page";
-    } else {
-        page = "page_" + num.toString();
-    }
-
-    for (elem of document.getElementsByClassName(page)) {
-        elem.hidden = !elem.hidden;
-    }
-}
-
 function duckduckgoSearch(search_input) {
     window.location.href = "https://duckduckgo.com/?q=" + search_input + "&ia=web";
 }
@@ -283,10 +234,6 @@ function add_search_listeners() {
     search_bar.addEventListener("onchange", function(event) {
         
     })
-}
-
-function hyperlink(link) {
-    window.location.href = link;
 }
 
 function load_theme_values() {
@@ -332,8 +279,7 @@ function save_theme_colors(custom_theme) {
         document.cookie = "custom_theme=false" + '; SameSite=Strict;';        
     }
 
-    settings_changed_popup();
-
+    // settings_changed_popup();
 }
 
 function set_default_theme() {
@@ -368,43 +314,37 @@ function settings_changed_popup() {
   }
 }
 
-function set_variable(var_name, value) {
-    let root = document.documentElement;
-    
-    root.style.setProperty(var_name, value);
-  }
+// function add_discord() {
+//     let disc_elem = document.createElement("iframe");
+//     disc_elem.src="https://discord.com/widget?id=" + disc_server_id + "&theme=dark";
+//     disc_elem.width="350";
+//     disc_elem.height="500";
+//     disc_elem.allowtransparency="true";
+//     disc_elem.frameborder="0";
+//     disc_elem.sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts";
 
-function add_discord() {
-    let disc_elem = document.createElement("iframe");
-    disc_elem.src="https://discord.com/widget?id=" + disc_server_id + "&theme=dark";
-    disc_elem.width="350";
-    disc_elem.height="500";
-    disc_elem.allowtransparency="true";
-    disc_elem.frameborder="0";
-    disc_elem.sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts";
+//     discord_sid_input.placeholder = disc_server_id;
 
-    discord_sid_input.placeholder = disc_server_id;
+//     let page_2 = document.getElementsByClassName("page_2")[0];
 
-    let page_2 = document.getElementsByClassName("page_2")[0];
+//     page_2.appendChild(disc_elem);
+//     discord_elem = disc_elem;
+// }
 
-    page_2.appendChild(disc_elem);
-    discord_elem = disc_elem;
-}
+// function add_spotify() {
+//     let spot_elem = document.createElement("iframe");
+//     spot_elem.src="https://open.spotify.com/embed/playlist/" + spotify_pl_id;
+//     spot_elem.allowtransparency="true";
+//     spot_elem.frameborder="0";
+//     spot_elem.allow="encrypted-media";
 
-function add_spotify() {
-    let spot_elem = document.createElement("iframe");
-    spot_elem.src="https://open.spotify.com/embed/playlist/" + spotify_pl_id;
-    spot_elem.allowtransparency="true";
-    spot_elem.frameborder="0";
-    spot_elem.allow="encrypted-media";
+//     spotify_pid_input.placeholder = spotify_pl_id;
 
-    spotify_pid_input.placeholder = spotify_pl_id;
+//     let page_4 = document.getElementsByClassName("page_4")[0];
 
-    let page_4 = document.getElementsByClassName("page_4")[0];
-
-    page_4.appendChild(spot_elem);
-    spotify_elem = spot_elem;
-}
+//     page_4.appendChild(spot_elem);
+//     spotify_elem = spot_elem;
+// }
 
 // Doesn't work to my knowledge
 // function add_calendar() {
