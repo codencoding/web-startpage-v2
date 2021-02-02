@@ -114,11 +114,8 @@
                     <iframe class="bg-discord" id="discord-widget" src="https://discord.com/widget?id=106615501169377280&theme=dark" height="500" width="550" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
             </div>
-            <div class="input-group mb-2 pb-6 px-4 fixed-bottom">
+            <div id="search-bar-container" class="input-group mb-2 pb-6 px-4 fixed-bottom mx-auto">
                 <div class="btn-group" role="group" aria-label="Search bar toggle group">
-                    <!-- <button class="btn btn-outline-secondary bg-dark img-thumb" type="button" aria-current="page"><img class="img-fluid" src="include/imgs/duckduckgo.png" alt="DuckDuckGo"></button>
-                    <button class="btn btn-outline-secondary bg-dark img-thumb" type="button"><img class="img-fluid" src="include/imgs/youtube.png" alt="DuckDuckGo"></button>
-                    <button class="btn btn-outline-secondary bg-dark img-thumb" type="button"><img class="img-fluid" src="include/imgs/netflix.png" alt="DuckDuckGo"></button> -->
                     <input type="radio" class="btn-check" name="btnradio" id="default_search" autocomplete="off" checked onclick="change_search_engine({'name':'duckduckgo','fnc':duckduckgoSearch, 'elem':this})">
                     <label class="btn btn-dark btn-outline-secondary" for="default_search"><img class="pt-1 img-thumb p-0 m-0" src="include/imgs/duckduckgo.png" alt="DuckDuckGo"></label>
                     

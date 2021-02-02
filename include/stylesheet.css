@@ -32,6 +32,10 @@
     #discord-widget {
         width: 100%;
     }
+
+    #search-bar-container {
+        max-width: 100%;
+    }
 }
 
 @media (max-height: 520px) {
@@ -62,10 +66,15 @@
 
 a.list-group-item {
     background-color: var(--bg-dark);
+    outline: none;
 }
 
 a.list-group-item:hover {
     background-color: var(--bg-tertiary);
+}
+
+a.list-group-item:focus {
+    color: var(--bg-tertiary);
 }
 
 .bg-tertiary {
@@ -86,4 +95,8 @@ a.list-group-item:hover {
 
 #time {
     cursor: pointer;
+}
+
+#search-bar-container {
+    width: 576px;
 }
