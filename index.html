@@ -2,229 +2,114 @@
 <html lang="en">
 
 <head>
-    <title>:l</title>
+    <title>Launch zone</title>
     <meta name="author" content="Chase Oden">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="include/stylesheet.css" type="text/css" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
     <script src="js/config.js"></script>
     <script src="js/utils.js"></script>
 </head>
 
-<body onload="init_page();">
-    <div class="background main_bg"></div>
-    
-    </div>
-    <div class="background" id="main_display">
-        <div id="header">
-            <div id="tab_switcher">
-                <div class="tab_wrapper">
-                    <div id="default_tab" class="circle circle_active" onclick="change_active_tab({'num':1, 'elem':this})"></div>
-                    <div class="tab_tooltip"><strong>Links</strong></div>
-                </div>
-                <div class="tab_wrapper">
-                    <div class="circle" onclick="change_active_tab({'num':2, 'elem':this})"></div>
-                    <div class="tab_tooltip"><strong>Discord</strong></div>
-                </div>
-                <!-- <div class="tab_wrapper">
-                    <div class="circle" onclick="change_active_tab({'num':3, 'elem':this})"></div>
-                    <div class="tab_tooltip"><strong>Calendar</strong></div>
-                </div> -->
-                <!-- <div class="tab_wrapper">
-                    <div class="circle" onclick="change_active_tab({'num':4, 'elem':this})"></div>
-                    <div class="tab_tooltip"><strong>Spotify</strong></div>
-                </div> -->
-                <img src="include/imgs/small_settings_light.png" class="circle" onclick="change_active_tab({'num':999, 'elem':this})">
+<body>
+    <div id="full-bg" class="bg-cover h-100 w-100 align-items-center justify-content-center row m-0">
+        <div id="center-window" class="bg-dark p-0">
+            <div id="window-header" class="py-1">
+                <ul class="nav nav-pills h-100 mw-50" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a id="tab-home-control" href="#tab-home" class="nav-link active ms-1 bg-dark" data-bs-toggle="pill" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">Home</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a id="tab-discord-control" href="#tab-discord" class="nav-link ms-1 bg-dark" data-bs-toggle="pill" href="#tab-discord" role="tab" aria-controls="tab-discord" aria-selected="false">Discord</a>
+                    </li>
+                </ul>
             </div>
-            <div id="weather">
-                <p id="temperature">000°F</p>
-                <div class="marquee">
-                    <p id="weather_desc" class="paused" onmouseover="run_weather_desc()">Cloudy skies and damp roads</p>
-                </div>
-            </div>
-
-            <div id="time"></div>
-            <div id="date"></div>
-        </div>
-
-        <div id="pg1_footer" class="page_1">
-            <div id="search_options">
-                <img id="default_search" name="duckduckgo" class="search_ico small_ico ico_active" src="include/imgs/duckduckgo.png" onclick="change_search_engine({'name':'duckduckgo','fnc':duckduckgoSearch, 'elem':this})">
-                <img name="youtube" class="search_ico small_ico" src="include/imgs/youtube.png" onclick="change_search_engine({'name':'youtube','fnc':youtubeSearch, 'elem':this})">
-                <img name="netflix" class="search_ico small_ico" src="include/imgs/netflix.png" onclick="change_search_engine({'name':'netflix','fnc':netflixSearch, 'elem':this})">
-            </div>
-            <input id="search_bar" type="search" placeholder="Search duckduckgo or paste a link" autofocus>
-        </div>
-
-        <div class="page_1">
-            <div class="custom_table">
-                <div class="column">
-                    <div>
-                        <header class="header">Media</header>
-                        <a href="https://youtube.com">
-                            Youtube
-                        </a>
-                        <a href="https://netflix.com">
-                            Netflix
-                        </a>
-                        <a href="https://xfinity.com/stream">
-                            Xfinity
-                        </a>
-                        <a href="https://twitch.tv">
-                            Twitch
-                        </a>
-                        <a href="https://hulu.com">
-                            Hulu
-                        </a>
-                    </div>
-                    <div>
-                        <header class="header">Utility</header>
-                        <a href="https://drive.google.com">
-                            Google Drive
-                        </a>
-                        <a href="https://mail.google.com">
-                            Gmail
-                        </a>
-                        <a href="https://calendar.google.com">
-                            Google Calendar
-                        </a>
-                        <a href="https://yahoo.com">
-                            Yahoo
-                        </a>
-                    </div>
-                    <div>
-                        <header class="header">Social</header>
-                        <a href="https://facebook.com">
-                            Facebook
-                        </a>
-                        <a href="https://facebook.com/messages">
-                            Messenger
-                        </a>
+            <div class="tab-content text-light">
+                <div class="tab-pane fade show active h-100" id="tab-home" role="tabpanel" aria-labelledby="tab-home-control">
+                    <div class="container-fluid h-100 m-0 p-0">
+                        <div class="row h-100 w-100">
+                            <div class="col-sm ms-2">
+                                <div class="list-group list-group-flush bg-dark p-0 rounded mt-2">
+                                    <h3 class="p-1 border-bottom border-danger m-0">Media</h3>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Youtube</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Netflix</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Xfinity</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Twitch</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Hulu </a>
+                                </div>
+                                <div class="list-group list-group-flush bg-dark p-0 rounded mt-2">
+                                    <h3 class="p-1 border-bottom border-danger m-0">Utility</h3>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Google Drive</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Gmail</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Google Calendar</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Yahoo</a>
+                                </div>
+                            </div>
+                            <div class="col-sm ms-2">
+                                <div class="list-group list-group-flush bg-dark p-0 rounded mt-2">
+                                    <h3 class="p-1 border-bottom border-danger m-0">School</h3>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Piazza</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Gradescope</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Canvas</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Datahub</a>
+                                </div>
+                                <div class="list-group list-group-flush bg-dark p-0 rounded mt-2">
+                                    <h3 class="p-1 border-bottom border-danger m-0">Work</h3>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Outlook</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Ecotime</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Basecamp</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Rockstar2077</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Flankenstein</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">LinkedIn</a>
+                                </div>
+                            </div>
+                            <div class="col-sm mx-2">
+                                <div class="list-group list-group-flush bg-dark p-0 rounded mt-2">
+                                    <h3 class="p-1 border-bottom border-danger m-0">Projects</h3>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">web startpage</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">web startpage v2</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Personal Portfolio</a>
+                                </div>
+                                <div class="list-group list-group-flush bg-dark p-0 rounded mt-2">
+                                    <h3 class="p-1 border-bottom border-danger m-0">Misc</h3>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Amazon</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Github</a>
+                                </div>
+                                <div class="list-group list-group-flush bg-dark p-0 rounded mt-2">
+                                    <h3 class="p-1 border-bottom border-danger m-0">Social</h3>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Facebook</a>
+                                    <a href="#" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Messenger</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div>
-                        <header class="header">School</header>
-                        <a href="https://piazza.com">
-                            Piazza
-                        </a>
-                        <a href="https://gradescope.com">
-                            Gradescope
-                        </a>
-                        <a href="https://canvas.ucsd.edu">
-                            Canvas
-                        </a>
-                        <a href="https://datahub.ucsd.edu">
-                            Datahub
-                        </a>
-                    </div>
-                    <div>
-                        <header class="header">Work</header>
-                        <a href="https://outlook.office.com">
-                            Outlook
-                        </a>
-                        <a href="https://urldefense.com/v3/__https://ucsd.us3.list-manage.com/track/click?u=0fdead76883320832b220bc47&id=2641bef6c4&e=5001715103__;!!Mih3wA!Q2htzOk1hrJPx6FkL49wDD9BW-Ka9f-uD3j-DFTGo2-KylI1LiXcHs_w9SLY7JU2$">
-                            Ecotime
-                        </a>
-                        <a href="https://3.basecamp.com/3610287/projects">
-                            Basecamp
-                        </a>
-                        <a href="https://2077.rockstarenergy.com">
-                            Rockstar2077
-                        </a>
-                        <a href="https://github.com/voytekresearch/flankenstein">
-                            Flankenstein Github
-                        </a>
-                        <a href="https://linkedin.com">
-                            LinkedIn
-                        </a>
-                    </div>
-                </div>
-                <div class="column">
-                    <div>
-                        <header class="header">Projects</header>
-                        <a href="https://github.com/codencoding/web-startpage">
-                            web startpage
-                        </a>
-                        <a href="https://github.com/codencoding/web-startpage-v2">
-                            web startpage v2
-                        </a>
-                        <a href="https://github.com/codencoding/codencoding.github.io">
-                            Personal Portfolio
-                        </a>
-                    </div>
-                    <div>
-                        <header class="header">Misc</header>
-                        <a href="https://amazon.com">
-                            Amazon
-                        </a>
-                        <a href="https://github.com">
-                            Github
-                        </a>
-                    </div>
+                <div class="tab-pane fade" id="tab-discord" role="tabpanel" aria-labelledby="tab-discord-control">
+                    <iframe id="discord-widget" src="https://discord.com/widget?id=106615501169377280&theme=dark" height="500" width="550" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
             </div>
-        </div>
-
-        <div class="page_2" hidden></div>
-        <!-- <div class="page_3" hidden>
-            <iframe id="googleCalendar" loading="lazy" src="https://calendar.google.com/calendar/embed?height=500&amp;wkst=1&amp;bgcolor=%23202225&amp;ctz=America%2FLos_Angeles&amp;src=Y29kZW5AdWNzZC5lZHU&amp;src=dWNzZC5lZHVfc2E0MWNlNXU3ZGFiamp2aGg3azlmdXBwN3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfY2g4bG9yaW80bjBubXQ1YTZ0OXBnbDBqazBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=dWNzZC5lZHVfcDJyMHFwdjRhcXFyc2Q3aXR2OGFzaW1hbnNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfMWo3dmx1cnQwbmMwZDhsZGVsdmQxZ2NqbjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfZ2FrMHJuMG84czFwdG1pZXV0ZHQzajR2cmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfZnVwZnZodDRrY2NkbGY1cGVrMWRwMzdxNm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfZ2RwZjBmcTdoNzZnYTM3OGdkYmVxdjk2YXNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dWNzZC5lZHVfdGJ0dHRoOG5hMDg1cG5ybHF2M3J2YXVnODRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW5nLnVjc2QuZWR1XzlzYThzMHZvY2duMGptZG50amk2aGlpN2VnQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%239E69AF&amp;color=%23616161&amp;color=%2333B679&amp;color=%23cc00c9&amp;color=%23F09300&amp;color=%230B8043&amp;color=%237CB342&amp;color=%23D50000&amp;color=%2300ccc6&amp;color=%23E4C441&amp;showTitle=0&amp;showNav=1&amp;showDate=0&amp;showPrint=0&amp;mode=AGENDA&amp;showTz=0&amp;showCalendars=1&amp;showTabs=0" width="320" height="500" frameborder="0" scrolling="no"></iframe>
-        </div> -->
-        <!-- <div class="page_4" hidden></div> -->
-        <div class="settings_page" hidden>
-            <div class="custom_table">
-                <div class="column settings_col">
-                    <div>
-                        <header class="header settings_header">Change colors</header>
-                        <span>bg_color:<input class="color_input" type="color" onchange="set_theme_color(this)"></span>
-                        <span>primary_color:<input class="color_input" type="color" onchange="set_theme_color(this)"></span>
-                        <span>secondary_color:<input class="color_input" type="color" onchange="set_theme_color(this)"></span>
-                        <span>tertiary_color:<input class="color_input" type="color" onchange="set_theme_color(this)"></span>
-                        <span>text_color:<input class="color_input" type="color" onchange="set_theme_color(this)"></span>
-                        <button onclick="save_theme_colors(custom_theme=true)">Save changes</button>
-                        <button onclick="set_default_theme()">Reset to default</button>
-                    </div>
-                    <div>
-                        <header class="header settings_header">Change links</header>
-                        <p>TODO</p>
-                    </div>
-                    <div>
-                        <header class="header settings_header">Change available search engines</header>
-                        <p>TODO</p>
-                    </div>
-                    <div>
-                        <header class="header settings_header">Military time toggle</header>
-                        <button onclick="toggle_military_time()">Toggle</button>
-                    </div>
-                </div>
-                <div class="column settings_col">
-                    <div>
-                        <header class="header settings_header">Home page bg</header>
-                        <p>TODO</p>
-                    </div>
-                    <div>
-                        <header class="header settings_header">Change weather API key</header>
-                        <span>Weather API key:<input class="weather settings_text_input" type="password"></span>
-                        <button onclick="change_weather_key()">Change weather API key</button>
-                    </div>
-                    <div>
-                        <header class="header settings_header">Change Discord server</header>
-                        <span>Discord server id:<input class="discord settings_text_input" type="text"></span>
-                        <button onclick="change_discord_src()">Change server</button>
-                    </div>
-                    <div>
-                        <header class="header settings_header">Change Spotify playlist</header>
-                        <span>Spotify playlist id:<input class="spotify settings_text_input" type="text"></span>
-                        <button onclick="change_spotify_playlist()">Change playlist</button>
-                    </div>
-                    <div>
-                        <header class="header settings_header">Source google calendar link</header>
-                        <p>TODO</p>
-                    </div>
-                </div>
+            <div class="input-group mb-2 pb-6 px-4 fixed-bottom">
+                <!-- <span class="input-group-text bg-dark text-light border-secondary">></span> -->
+                <button class="btn btn-outline-secondary bg-dark img-thumb" type="button"><img class="img-fluid" src="include/imgs/duckduckgo.png" alt="DuckDuckGo"></button>
+                <button class="btn btn-outline-secondary bg-dark img-thumb" type="button"><img class="img-fluid" src="include/imgs/youtube.png" alt="DuckDuckGo"></button>
+                <button class="btn btn-outline-secondary bg-dark img-thumb" type="button"><img class="img-fluid" src="include/imgs/netflix.png" alt="DuckDuckGo"></button>
+                <input type="text" class="form-control bg-dark text-light border-secondary" placeholder="Search here..." aria-label="Search" autofocus>
             </div>
+            <!-- <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button">Button</button>
+                <button class="btn btn-outline-secondary" type="button">Button</button>
+                <input type="text" class="form-control" placeholder="" aria-label="Example text with two button addons">
+            </div> -->
         </div>
     </div>
-    <div id="settings_changed" class="popup visibility">Setting Changed</div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>
