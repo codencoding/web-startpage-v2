@@ -30,7 +30,16 @@
     }
 
     #discord-widget {
-        /* height: 100%; */
+        width: 100%;
+    }
+}
+
+@media (max-height: 520px) {
+    #center-window {
+        width: 100vw;
+    }
+
+    #discord-widget {
         width: 100%;
     }
 }

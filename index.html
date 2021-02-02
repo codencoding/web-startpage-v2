@@ -12,15 +12,15 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     
-    <script src="js/config.js"></script>
-    <script src="js/utils.js"></script>
+    <!-- <script src="js/config.js"></script> -->
+    <!-- <script src="js/utils.js"></script> -->
 </head>
 
 <body>
     <div id="full-bg" class="bg-cover h-100 w-100 align-items-center justify-content-center row m-0">
         <div id="center-window" class="bg-dark p-0">
-            <div id="window-header" class="py-1">
-                <ul class="nav nav-pills h-100 mw-50" role="tablist">
+            <div id="window-header" class="row py-1 m-0 align-items-center">
+                <ul class="nav nav-pills h-100 mw-50 col" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a id="tab-home-control" href="#tab-home" class="nav-link active ms-1 bg-dark" data-bs-toggle="pill" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">Home</a>
                     </li>
@@ -28,6 +28,19 @@
                         <a id="tab-discord-control" href="#tab-discord" class="nav-link ms-1 bg-dark" data-bs-toggle="pill" href="#tab-discord" role="tab" aria-controls="tab-discord" aria-selected="false">Discord</a>
                     </li>
                 </ul>
+                <div class="col text-white">
+                    <div class="row p-0 m-0">
+                        <p class="my-0 p-0 justify-content-between">
+                            Tue Feb 02 2021
+                            <span class="m-0 p-0 float-end">
+                                12:42:43 PM
+                            </span>
+                        </p>
+                    </div>
+                    <div class="row p-0 m-0">
+                        <p class="my-0 p-0 border-top border-danger text-right">58°F Overcast clouds</p>
+                    </div>
+                </div>
             </div>
             <div class="tab-content text-light">
                 <div class="tab-pane fade show active h-100" id="tab-home" role="tabpanel" aria-labelledby="tab-home-control">
@@ -64,6 +77,11 @@
                                     <a href="https://mail.google.com" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Gmail</a>
                                     <a href="https://calendar.google.com" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Google Calendar</a>
                                     <a href="https://yahoo.com" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Yahoo</a>
+                                </div>
+                                <div class="list-group list-group-flush bg-dark p-0 rounded mt-2">
+                                    <h3 class="p-1 border-bottom border-danger m-0">DnD</h3>
+                                    <a href="https://roll20.net/" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">Roll 20</a>
+                                    <a href="https://dndbeyond.com/" class="list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0">D&D Beyond</a>
                                 </div>
                             </div>
                             <div class="col-sm mx-2">
