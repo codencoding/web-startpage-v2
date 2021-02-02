@@ -3,7 +3,7 @@
 }
 
 #full-bg {
-    background: url("imgs/bg.JPG");
+    background: url("imgs/room-bg.jpg");
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -12,6 +12,7 @@
 #center-window {
     width: 550px;
     height: 550px;
+    box-shadow: 5px 5px 5px black;
 }
 
 #window-header {
@@ -68,4 +69,8 @@ a.list-group-item:hover {
 
 .img-thumb {
     width: 55px;
+}
+
+.bg-discord {
+    background-color: #7289da;
 }
