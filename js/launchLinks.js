@@ -1,5 +1,12 @@
 // var launchLinksJSON
 var launchLinksContainer
+var resetLaunchLinksBtn = document.getElementById("resetLaunchLinksBtn")
+
+
+resetLaunchLinksBtn.addEventListener("click", () => {
+    clearLaunchLinksCache()
+})
+
 
 function createSectionElem(sectionData) {
     let sectionElem = document.createElement("div")
@@ -35,6 +42,7 @@ function createLaunchLinkCol(colData) {
 }
 
 function populateLaunchLinks(launchLinksJSON) {
+    launchLinksContainer.innerHTML = ''
     if (launchLinksJSON === undefined) {
         throw new Error("Couldn't populate launch links, launch links file not loaded")
     }
@@ -47,5 +55,39 @@ function populateLaunchLinks(launchLinksJSON) {
             
             launchLinksContainer.appendChild(colElem)
         }
+    }
+}
+
+function clearLaunchLinksCache() {
+    localStorage = localStorage.removeItem("launch-links")
+    loadLaunchLinkData()
+}
+
+function setCustomLaunchLinks(fPath) {
+    localStorage.setItem("custom-launch-links", fPath)
+}
+
+function clearCustomLaunchLinks() {
+    localStorage = localStorage.removeItem("custom-launch-links")
+}
+
+function cacheLaunchLinks(callback) {
+    let fPath = "data/launch-links.json"
+
+    if ("custom-launch-links" in localStorage) {
+        fPath = localStorage.getItem("custom-launch-links")
+    }
+
+    fetchJSON(fPath, (response) => {
+        localStorage.setItem("launch-links", response)
+        callback()
+    });
+}
+
+function loadLaunchLinkData() {
+    if (!("launch-links" in localStorage)) {
+        cacheLaunchLinks(loadLaunchLinkData)
+    } else {
+        populateLaunchLinks(JSON.parse(localStorage.getItem("launch-links")))
     }
 }

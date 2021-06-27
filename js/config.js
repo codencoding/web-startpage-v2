@@ -74,12 +74,6 @@ if ("military_toggle" in cookie) {
 //     spotify_pl_id = cookie["spotify_pl_id"];
 // }
 
-function loadLaunchLinkData() {
-    fetchJSON("data/launch-links.json", (response) => {
-        populateLaunchLinks(JSON.parse(response))
-    });
-}
-
 function toggle_military_time() {
     if ("military_toggle" in cookie) {
         delete_cookie("military_toggle");

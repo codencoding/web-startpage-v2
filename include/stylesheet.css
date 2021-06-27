@@ -100,3 +100,20 @@ a.list-group-item:focus {
 #search-bar-container {
     width: 576px;
 }
+
+#tab-settings-control > * {
+    /* color:rgb(131, 131, 131) */
+    filter: brightness(0.5);
+    transition: 150ms;
+}
+
+#tab-settings-control:hover > * {
+    transition: 150ms;
+    filter: brightness(1.2);
+}
+
+#tab-settings-control.active > *, #tab-settings-control:hover > * {
+    filter: brightness(1.0);
+    color:var(--bg-tertiary);
+    transition: 150ms;
+}

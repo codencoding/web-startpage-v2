@@ -24,6 +24,13 @@
                     <li class="nav-item" role="presentation">
                         <a id="tab-discord-control" href="#tab-discord" class="nav-link ms-1 bg-dark" data-bs-toggle="pill" href="#tab-discord" role="tab" aria-controls="tab-discord" aria-selected="false">Discord</a>
                     </li>
+                    <li class="nav-item w-25" role="presentation">
+                        <button id="tab-settings-control" href="#tab-settings" class="nav-link ms-1 bg-dark btn btn-dark shadow-none border-0 p-0 w-75 h-100 " data-bs-toggle="pill" href="#tab-settings" role="tab" aria-controls="tab-settings" aria-selected="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 17">
+                                <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                            </svg>
+                        </button>
+                    </li>
                 </ul>
                 <div class="col text-white">
                     <div class="row p-0 m-0">
@@ -50,6 +57,23 @@
                 </div>
                 <div class="tab-pane fade" id="tab-discord" role="tabpanel" aria-labelledby="tab-discord-control">
                     <iframe class="bg-discord" id="discord-widget" src="https://discord.com/widget?id=106615501169377280&theme=dark" height="500" width="550" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                </div>
+                <div class="tab-pane fade w-100 m-2" id="tab-settings" role="tabpanel" aria-labelledby="tab-element-control">
+                    <!-- <div class="w-100 pb-2">
+                        <label for="launchLinkUploadBtn">Upload new launch links:</label>
+                        <input id="launchLinkUploadBtn" type="file" class="border border-light p-2 rounded">
+                    </div>
+                    <div class="w-100 pb-2">
+                        Test Form
+                        <form enctype = "multipart/form-data" onsubmit="return false;" >
+                            <input id="file" type="file" name="static_file" />
+                            <button id="upload-button" onclick="uploadFile(this.form)"> Upload </button>
+                        </form>
+                    </div> -->
+                    <div class="w-100 pb-2 px-2">
+                        <label for="resetLaunchLinksBtn" hidden>Reset launch links</label>
+                        <button id="resetLaunchLinksBtn" class="btn btn-outline-light">Reset launch links</button>
+                    </div>
                 </div>
             </div>
             <div id="search-bar-container" class="input-group mb-2 pb-6 px-4 fixed-bottom mx-auto">
