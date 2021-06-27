@@ -117,3 +117,7 @@ a.list-group-item:focus {
     color:var(--bg-tertiary);
     transition: 150ms;
 }
+
+.meridianStr {
+    font-size:x-small;
+}

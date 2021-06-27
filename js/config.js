@@ -134,7 +134,8 @@ function run_clock() {
     if (curr_date != date_elem.innerHTML) {
         date_elem.innerHTML = curr_date;
     }
-    time_elem.innerHTML = curr_time;
+    let meridianStr = curr_time.slice(curr_time.length - 3, curr_time.length)
+    time_elem.innerHTML = curr_time.slice(0, curr_time.length - 3) + `<span class="meridianStr">${meridianStr}</span>`;
 
     dt = new Date();
 }
