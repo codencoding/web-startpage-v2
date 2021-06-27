@@ -22,6 +22,7 @@ function init_page() {
     init_elem_refs();
     run_clock();
     update_weather();
+    loadLaunchLinkData();
     // load_theme_values();
     // add_discord();
     // add_spotify();
@@ -34,6 +35,7 @@ function init_elem_refs() {
     weather_temp = document.getElementById("temperature");
     search_bar = document.getElementById("search-bar");
     active_search_eng["elem"] = document.getElementById("default_search");
+    launchLinksContainer = document.getElementById("launchLinksContainer");
     // discord_sid_input = document.getElementsByClassName("discord settings_text_input")[0];
     // if ("disc_server_id" in cookie) {
     //     discord_sid_input.placeholder = cookie["disc_server_id"];
@@ -71,6 +73,12 @@ if ("military_toggle" in cookie) {
 // if ("spotify_pl_id" in cookie) {
 //     spotify_pl_id = cookie["spotify_pl_id"];
 // }
+
+function loadLaunchLinkData() {
+    fetchJSON("data/launch-links.json", (response) => {
+        populateLaunchLinks(JSON.parse(response))
+    });
+}
 
 function toggle_military_time() {
     if ("military_toggle" in cookie) {
