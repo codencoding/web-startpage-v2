@@ -1,0 +1,73 @@
+{
+    "col1":[
+        {
+            "sectionName":"Media",
+            "sectionData":[
+                {"displayName":"Youtube", "href":"https://youtube.com"},
+                {"displayName":"Netflix", "href":"https://netflix.com"},
+                {"displayName":"Xfinity", "href":"https://xfinity.com/stream"},
+                {"displayName":"Twitch", "href":"https://twitch.tv"},
+                {"displayName":"Hulu" , "href":"https://hulu.com"}
+            ]
+        },
+        {
+            "sectionName":"Work",
+            "sectionData":[
+                {"displayName":"Outlook", "href":"https://outlook.office.com"},
+                {"displayName":"Flankenstein", "href":"https://github.com/voytekresearch/flankenstein"},
+                {"displayName":"LinkedIn", "href":"https://linkedin.com"}
+            ]
+        }
+    ],
+    "col2":[
+        {
+            "sectionName":"School",
+            "sectionData":[
+                {"displayName":"Piazza", "href":"https://piazza.com"},
+                {"displayName":"Gradescope", "href":"https://gradescope.com"},
+                {"displayName":"Canvas", "href":"https://canvas.ucsd.edu"},
+                {"displayName":"Datahub", "href":"https://datahub.ucsd.edu"}
+            ]
+        },
+        {
+            "sectionName":"Utility",
+            "sectionData":[
+                {"displayName":"Google Drive", "href":"https://drive.google.com"},
+                {"displayName":"Gmail", "href":"https://mail.google.com"},
+                {"displayName":"Google Calendar", "href":"https://calendar.google.com"},
+                {"displayName":"Yahoo", "href":"https://yahoo.com"}
+            ]
+        },
+        {
+            "sectionName":"D&D",
+            "sectionData":[
+                {"displayName":"Roll 20", "href":"https://roll20.net/"},
+                {"displayName":"D&D Beyond", "href":"https://dndbeyond.com/"}
+            ]
+        }
+    ],
+    "col3":[
+        {
+            "sectionName":"Projects",
+            "sectionData":[
+                {"displayName":"Web Startpage", "href":"https://github.com/codencoding/web-startpage"},
+                {"displayName":"Web Startpage V2", "href":"https://github.com/codencoding/web-startpage-v2"},
+                {"displayName":"Personal Portfolio", "href":"https://github.com/codencoding/codencoding.github.io"}
+            ]
+        },
+        {
+            "sectionName":"Misc",
+            "sectionData":[
+                {"displayName":"Amazon", "href":"https://amazon.com"},
+                {"displayName":"Github", "href":"https://github.com"}
+            ]
+        },
+        {
+            "sectionName":"Social",
+            "sectionData":[
+                {"displayName":"Facebook", "href":"https://facebook.com"},
+                {"displayName":"Messenger", "href":"https://facebook.com/messages"}
+            ]
+        }
+    ]
+}
