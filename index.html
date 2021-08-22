@@ -78,13 +78,13 @@
             </div>
             <div id="search-bar-container" class="input-group mb-2 pb-6 px-4 fixed-bottom mx-auto">
                 <div class="btn-group" role="group" aria-label="Search bar toggle group">
-                    <input type="radio" class="btn-check" name="btnradio" id="default_search" autocomplete="off" checked onclick="change_search_engine({'name':'duckduckgo','fnc':duckduckgoSearch, 'elem':this})">
+                    <input type="radio" class="btn-check" name="btnradio" id="default_search" autocomplete="off" checked onclick="change_search_engine(search_engines[0])">
                     <label class="btn btn-dark btn-outline-secondary" for="default_search"><img class="pt-1 img-thumb p-0 m-0" src="include/imgs/duckduckgo.png" alt="DuckDuckGo"></label>
                     
-                    <input type="radio" class="btn-check" name="btnradio" id="youtube_radio" autocomplete="off" onclick="change_search_engine({'name':'youtube','fnc':youtubeSearch, 'elem':this})">
+                    <input type="radio" class="btn-check" name="btnradio" id="youtube_radio" autocomplete="off" onclick="change_search_engine(search_engines[1])">
                     <label class="btn btn-dark btn-outline-secondary" for="youtube_radio"><img class="pt-1 img-thumb p-0 m-0" src="include/imgs/youtube.png" alt="Youtube"></label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="netflix_radio" autocomplete="off" onclick="change_search_engine({'name':'netflix','fnc':netflixSearch, 'elem':this})">
+                    <input type="radio" class="btn-check" name="btnradio" id="netflix_radio" autocomplete="off" onclick="change_search_engine(search_engines[2])">
                     <label class="btn btn-dark btn-outline-secondary rounded-0" for="netflix_radio"><img class="img-thumb p-0 m-0" src="include/imgs/netflix.png" alt="Netflix"></label>
                 </div>
                 <input id="search-bar" type="text" class="form-control bg-dark text-light border-secondary" placeholder="Search duckduckgo or paste a link" aria-label="Search" autofocus>
