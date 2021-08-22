@@ -5,8 +5,6 @@ var weather_desc;
 var search_bar;
 var dt = new Date();
 var active_search_eng = {"name":"duckduckgo","fnc":duckduckgoSearch, "elem":null};
-var search_engines = []
-var search_eng_btns;
 var military_toggle = false;
 var disc_server_id;
 var discord_elem;
@@ -38,12 +36,6 @@ function init_elem_refs() {
     search_bar = document.getElementById("search-bar");
     active_search_eng["elem"] = document.getElementById("default_search");
     launchLinksContainer = document.getElementById("launchLinksContainer");
-    search_eng_btns = document.getElementById('search-bar-container').getElementsByClassName('btn-check');
-    search_engines = [
-        {'name':'duckduckgo','fnc':duckduckgoSearch, 'elem':search_eng_btns[0]},
-        {'name':'youtube','fnc':youtubeSearch, 'elem':search_eng_btns[1]},
-        {'name':'netflix','fnc':netflixSearch, 'elem':search_eng_btns[2]}
-    ];
     // discord_sid_input = document.getElementsByClassName("discord settings_text_input")[0];
     // if ("disc_server_id" in cookie) {
     //     discord_sid_input.placeholder = cookie["disc_server_id"];
@@ -202,9 +194,11 @@ function update_weather(force=false) {
 }
 
 function change_search_engine(sengine) {
+    active_search_eng["elem"].classList.toggle("ico_active");
+    
     active_search_eng = sengine;
     search_bar.placeholder = "Search " + sengine["name"] + " or paste a link";
-    sengine["elem"].click();
+    sengine["elem"].classList.toggle("ico_active");
 }
 
 function duckduckgoSearch(search_input) {
@@ -238,32 +232,11 @@ function add_search_listeners() {
         if (event.keyCode === 13) {
             check_search(search_bar.value);
         }
-        let input_val = event.originalTarget.value;
-        if (input_val.length == 3 && input_val.slice(0, 1) == '.') {
-            search_engine_shortcut(input_val.slice(1, 3));
-        }
-    });
-}
+    }); 
 
-function search_engine_shortcut(shortcut_key) {
-    switch (shortcut_key) {
-        case 'dd':
-            // Switch active search engine to duckduckgo
-            change_search_engine(search_engines[0]);
-            break;
-        case 'yt':
-            // Switch active search engine to youtube
-            change_search_engine(search_engines[1]);
-            break;
-        case 'nf':
-            // Switch active search engine to netflix
-            change_search_engine(search_engines[2]);
-            break;
-
-        default:
-            return
-    }
-    search_bar.value = '';
+    search_bar.addEventListener("onchange", function(event) {
+        
+    })
 }
 
 function load_theme_values() {
