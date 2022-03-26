@@ -121,3 +121,9 @@ a.list-group-item:focus {
 .meridianStr {
     font-size:x-small;
 }
+
+#dev-console {
+    background-color: #253728;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
