@@ -15,7 +15,6 @@ var spotify_elem;
 var spot_server_id;
 var spotify_pid_input;
 var spotify_pl_id;
-var weather_key_input;
 var weather_interval = setInterval(update_weather, 1000*30);
 var search_icos = document.getElementsByClassName("search_ico");
 
@@ -52,7 +51,6 @@ function init_elem_refs() {
     // if ("spotify_pl_id" in cookie) {
     //     spotify_pid_input.placeholder = cookie["spotify_pl_id"];
     // }
-    // weather_key_input = document.getElementsByClassName("weather settings_text_input")[0];
 
     add_search_listeners();
 }
@@ -126,15 +124,6 @@ function change_spotify_playlist() {
 
 }
 
-function change_weather_key() {
-    localStorage.setItem("weather_key", weather_key_input.value);
-    update_weather(force=true);
-    weather_interval = setInterval(update_weather, 1000*30);
-
-    settings_changed_popup();
-
-}
-
 function run_clock() {
     let curr_date = dt.toDateString();
     let curr_time = dt.toLocaleTimeString('en-US', { hour12: military_toggle });
@@ -151,6 +140,18 @@ setInterval(run_clock, 1000);
 
 function _capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function set_city_id(strCityId) {
+    localStorage.setItem('city_id', strCityId);
+}
+
+function set_weather_key(strValue) {
+    localStorage.setItem("weather_key", strValue);
+    update_weather(force=true);
+    weather_interval = setInterval(update_weather, 1000*30);
+
+    settings_changed_popup();
 }
 
 function fetch_weather() {
@@ -239,23 +240,23 @@ function add_search_listeners() {
             check_search(search_bar.value);
         }
         let input_val = event.originalTarget.value;
-        if (input_val.length == 3 && input_val.slice(0, 1) == '.') {
-            search_engine_shortcut(input_val.slice(1, 3));
+        if (input_val.length == 4 && input_val.slice(0, 1) == '.') {
+            search_engine_shortcut(input_val.slice(1, 4));
         }
     });
 }
 
 function search_engine_shortcut(shortcut_key) {
     switch (shortcut_key) {
-        case 'dd':
+        case 'dd ':
             // Switch active search engine to duckduckgo
             change_search_engine(search_engines[0]);
             break;
-        case 'yt':
+        case 'yt ':
             // Switch active search engine to youtube
             change_search_engine(search_engines[1]);
             break;
-        case 'nf':
+        case 'nf ':
             // Switch active search engine to netflix
             change_search_engine(search_engines[2]);
             break;
