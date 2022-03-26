@@ -58,7 +58,7 @@
                 <div class="tab-pane fade" id="tab-discord" role="tabpanel" aria-labelledby="tab-discord-control">
                     <iframe class="bg-discord" id="discord-widget" src="https://discord.com/widget?id=106615501169377280&theme=dark" height="500" width="550" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
-                <div class="tab-pane fade w-100 m-2" id="tab-settings" role="tabpanel" aria-labelledby="tab-element-control">
+                <div class="tab-pane fade w-100 h-100 p-2" id="tab-settings" role="tabpanel" aria-labelledby="tab-element-control">
                     <!-- <div class="w-100 pb-2">
                         <label for="launchLinkUploadBtn">Upload new launch links:</label>
                         <input id="launchLinkUploadBtn" type="file" class="border border-light p-2 rounded">
@@ -73,6 +73,15 @@
                     <div class="w-100 pb-2 px-2">
                         <label for="resetLaunchLinksBtn" hidden>Reset launch links</label>
                         <button id="resetLaunchLinksBtn" class="btn btn-outline-light">Reset launch links</button>
+                    </div>
+                    <div class="w-100 pb-2 px-2">
+                        <label for="openDevConsoleBtn" hidden>Toggle Dev Console</label>
+                        <button id="openDevConsoleBtn" class="btn btn-outline-light">Toggle Dev Console</button>
+                    </div>
+                    <div id="dev-div" class="w-100 h-75 border border-secondary rounded visually-hidden p-2">
+                        <h4>Dev Console</h4>
+                        <div id="dev-console" class="w-100 h-75 p-2">
+                        </div>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,9 @@ var spotify_pid_input;
 var spotify_pl_id;
 var weather_interval = setInterval(update_weather, 1000*30);
 var search_icos = document.getElementsByClassName("search_ico");
+var dev_console_elem;
+var dev_div_elem;
+var openDevConsoleBtn;
 
 
 function init_page() {
@@ -32,17 +35,29 @@ function init_page() {
 function init_elem_refs() {
     time_elem = document.getElementById("time");
     date_elem = document.getElementById("date");
+    
     weather_desc = document.getElementById("weather-desc");
     weather_temp = document.getElementById("temperature");
+    
     search_bar = document.getElementById("search-bar");
     active_search_eng["elem"] = document.getElementById("default_search");
-    launchLinksContainer = document.getElementById("launchLinksContainer");
     search_eng_btns = document.getElementById('search-bar-container').getElementsByClassName('btn-check');
     search_engines = [
         {'name':'duckduckgo','fnc':duckduckgoSearch, 'elem':search_eng_btns[0]},
         {'name':'youtube','fnc':youtubeSearch, 'elem':search_eng_btns[1]},
         {'name':'netflix','fnc':netflixSearch, 'elem':search_eng_btns[2]}
     ];
+    
+    launchLinksContainer = document.getElementById("launchLinksContainer");
+    
+    dev_console_elem = document.getElementById("dev-console");
+    dev_div_elem = document.getElementById("dev-div");
+    openDevConsoleBtn = document.getElementById("openDevConsoleBtn")
+    openDevConsoleBtn.addEventListener("click", () => {
+        populate_dev_console();
+        dev_div_elem.classList.toggle("visually-hidden");
+    })
+    
     // discord_sid_input = document.getElementsByClassName("discord settings_text_input")[0];
     // if ("disc_server_id" in cookie) {
     //     discord_sid_input.placeholder = cookie["disc_server_id"];
@@ -387,5 +402,44 @@ function settings_changed_popup() {
 //     cal_elem.scrolling="no";
 //     document.body.appendChild(cal_elem);
 // }
+
+function populate_dev_console() {
+    dev_console_elem.innerHTML = "";
+
+    var header_elem = document.createElement('h5');
+    header_elem.innerHTML = "localStorage";
+    dev_console_elem.appendChild(document.createElement('hr'));
+    dev_console_elem.appendChild(header_elem);
+    dev_console_elem.appendChild(document.createElement('hr'));
+    
+    for (const key in localStorage) {
+        if (Object.hasOwnProperty.call(localStorage, key)) {
+            const value = localStorage[key];
+            
+            var elem = document.createElement('p');
+            elem.className = "p-0 m-0";
+            elem.innerHTML = "<b>" + key + "</b>" + ": " + value;
+            
+            dev_console_elem.appendChild(elem)
+        }
+    }
+
+    header_elem = document.createElement('h5');
+    header_elem.innerHTML = "cookie";
+    dev_console_elem.appendChild(document.createElement('hr'));
+    dev_console_elem.appendChild(header_elem);
+    dev_console_elem.appendChild(document.createElement('hr'));
+    for (const key in cookie) {
+        if (Object.hasOwnProperty.call(cookie, key)) {
+            const value = cookie[key];
+            
+            var elem = document.createElement('p');
+            elem.className = "p-0 m-0";
+            elem.innerHTML = "<b>" + key + "</b>" + ": " + value;
+            
+            dev_console_elem.appendChild(elem)
+        }
+    }
+}
 
 console.log("Config loaded");
