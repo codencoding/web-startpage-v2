@@ -222,9 +222,9 @@ function create_twitch_elem(streamer_data) {
     streamer_name_header.innerText = streamer_data["user_name"];
     streamer_info_div.appendChild(streamer_name_header);
     
-    // let stream_duration_metric = document.createElement('small');
-    // stream_duration_metric.innerText = "Streaming for 2 hours";
-    // streamer_info_div.appendChild(stream_duration_metric);
+    let stream_duration_metric = document.createElement('small');
+    stream_duration_metric.innerText = "Viewers: " + streamer_data.viewer_count;
+    streamer_info_div.appendChild(stream_duration_metric);
 
     let game_str_info = document.createElement('p');
     game_str_info.classList = "mb-0";
