@@ -7,10 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="include/stylesheet.css?v=1.0" type="text/css"/>
+    <link rel="stylesheet" href="include/stylesheet.css?v=1.1" type="text/css"/>
     
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
 </head>
 
 <body onload="init_page()">
@@ -18,15 +19,18 @@
         <div id="center-window" class="bg-dark p-0">
             <div id="window-header" class="row py-1 m-0 align-items-center">
                 <ul class="nav nav-pills h-100 mw-50 col" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a id="tab-home-control" href="#tab-home" class="nav-link active ms-1 bg-dark" data-bs-toggle="pill" href="#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">Home</a>
+                    <li class="w-25 ms-1 nav-item" role="presentation">
+                        <a id="tab-home-control" href="#tab-home" class="text-center px-1 nav-link active bg-dark" data-bs-toggle="pill" role="tab" aria-controls="tab-home" aria-selected="true">Home</a>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <a id="tab-discord-control" href="#tab-discord" class="nav-link ms-1 bg-dark" data-bs-toggle="pill" href="#tab-discord" role="tab" aria-controls="tab-discord" aria-selected="false">Discord</a>
+                    <li class="w-25 ms-1 nav-item" role="presentation">
+                        <a id="tab-discord-control" href="#tab-discord" class="text-center px-1 nav-link bg-dark" data-bs-toggle="pill" role="tab" aria-controls="tab-discord" aria-selected="false">Discord</a>
                     </li>
-                    <li class="nav-item w-25" role="presentation">
-                        <button id="tab-settings-control" href="#tab-settings" class="nav-link ms-1 bg-dark btn btn-dark shadow-none border-0 p-0 w-75 h-100 " data-bs-toggle="pill" href="#tab-settings" role="tab" aria-controls="tab-settings" aria-selected="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 17">
+                    <li class="w-25 ms-1 nav-item" role="presentation">
+                        <a id="tab-twitch-control" href="#tab-twitch" class="text-center px-1 nav-link bg-dark" data-bs-toggle="pill" role="tab" aria-controls="tab-twitch" aria-selected="false">Twitch</a>
+                    </li>
+                    <li class="ms-1 nav-item" role="presentation">
+                        <button id="tab-settings-control" href="#tab-settings" class="w-100 px-2 nav-link bg-dark btn btn-dark shadow-none border-0 p-0 w-75 h-100 " data-bs-toggle="pill" href="#tab-settings" role="tab" aria-controls="tab-settings" aria-selected="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" class="bi bi-gear-fill" viewBox="0 0 16 17">
                                 <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
                             </svg>
                         </button>
@@ -58,6 +62,12 @@
                 <div class="tab-pane fade" id="tab-discord" role="tabpanel" aria-labelledby="tab-discord-control">
                     <iframe class="bg-discord" id="discord-widget" src="https://discord.com/widget?id=106615501169377280&theme=dark" height="500" width="550" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
+                <div class="tab-pane fade p-2 h-100 w-100" id="tab-twitch" role="tabpanel" aria-labelledby="tab-discord-control">
+                    <div id="twitch-container" class="vstack gap-2 overflow-scroll w-100 h-100">
+                        <h3 class="text-center w-100">Who's Live?</h3>
+                        <div id="twitch-streamer-lst" class="list-group list-group-flush"></div>
+                    </div>
+                </div>
                 <div class="tab-pane fade w-100 h-100 p-2" id="tab-settings" role="tabpanel" aria-labelledby="tab-element-control">
                     <!-- <div class="w-100 pb-2">
                         <label for="launchLinkUploadBtn">Upload new launch links:</label>
@@ -75,11 +85,15 @@
                         <button id="resetLaunchLinksBtn" class="btn btn-outline-light">Reset launch links</button>
                     </div>
                     <div class="w-100 pb-2 px-2">
-                        <label for="openDevConsoleBtn" hidden>Toggle Dev Console</label>
-                        <button id="openDevConsoleBtn" class="btn btn-outline-light">Toggle Dev Console</button>
+                        <label for="authTwitchBtn" hidden>Run Twitch Authenticator</label>
+                        <button id="authTwitchBtn" class="btn btn-outline-light">Run Twitch Authenticator</button>
                     </div>
-                    <div id="dev-div" class="w-100 h-75 border border-secondary rounded visually-hidden p-2">
-                        <h4>Dev Console</h4>
+                    <div class="w-100 pb-2 px-2">
+                        <label for="openDevConsoleBtn" hidden>Toggle Debug Console</label>
+                        <button id="openDevConsoleBtn" class="btn btn-outline-light">Toggle Debug Console</button>
+                    </div>
+                    <div id="dev-div" class="w-100 h-75 rounded visually-hidden p-2">
+                        <h4>Debug Console</h4>
                         <div id="dev-console" class="w-100 h-75 p-2">
                         </div>
                     </div>
@@ -102,10 +116,12 @@
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->
     <!-- Local js -->
     <script src="js/utils.js"></script>
     <script src="js/launchLinks.js"></script>
+    <script src="js/twitchApp.js"></script>
     <script src="js/config.js"></script>
 </body>
 

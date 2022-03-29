@@ -22,7 +22,7 @@ function createSectionElem(sectionData) {
 
         linkElem.href = sectionObj["href"]
         linkElem.innerHTML = sectionObj["displayName"]
-        linkElem.classList = "list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0"
+        linkElem.classList = "list-group-item list-group-item-action text-light p-0 ps-2 m-0 border-0 link-elem"
 
         sectionElem.appendChild(linkElem)
     });
