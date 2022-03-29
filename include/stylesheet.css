@@ -64,16 +64,16 @@
     color: #ffffff;
 }
 
-a.list-group-item {
+a.list-group-item.link-elem {
     background-color: var(--bg-dark);
     outline: none;
 }
 
-a.list-group-item:hover {
+a.list-group-item.link-elem:hover {
     background-color: var(--bg-tertiary);
 }
 
-a.list-group-item:focus {
+a.list-group-item.link-elem:focus {
     color: var(--bg-tertiary);
 }
 
@@ -126,4 +126,22 @@ a.list-group-item:focus {
     background-color: #253728;
     overflow-y: scroll;
     scrollbar-width: thin;
+}
+
+#twitch-container {
+    scrollbar-width: none;
+}
+
+.streamer-card.list-group-item {
+    background-color: var(--bg-dark);
+    outline: none;
+    border-bottom: 1px solid white;
+    transition: border-left 0.15s ease;
+    -moz-transition: border-left 0.15s ease; /* Firefox */
+}
+
+.streamer-card.list-group-item:hover {
+    background-color: transparent;
+    border-left: 9px solid var(--bg-tertiary);
+    transition: all 0.15s ease;
 }
