@@ -9,6 +9,11 @@ var twitchStreamerLst = document.getElementById('twitch-streamer-lst');
 
 twitchTabBtn.addEventListener("click", () => {
     let twitch_streamer_data = get_twitch_streamer_statuses(access_token, client_id, user_id)["data"];
+    // Sorting by viewer count
+    twitch_streamer_data.sort((a, b) => {
+        return a.viewer_count < b.viewer_count;
+    })
+
     fetch_streamer_avatars(twitch_streamer_data);
 
     populate_twitch_streamers(twitch_streamer_data);
@@ -92,7 +97,6 @@ function twitch_auth() {
 function fetch_twitch_access_token(auth_code) {
     // Step 2: Then fill in the authorization code returned from the previous redirect page to the below url
     // This will give us the link we can submit a POST request to to get an access token
-    console.log(auth_code);
     const token_link = `https://id.twitch.tv/oauth2/token?client_id=${client_id}&client_secret=${client_secret}&code=${auth_code}&grant_type=authorization_code&redirect_uri=${redirect_uri}`;
 
     // Step 3: Use the httpPost method with the token_link to get a JSON-encoded access token
@@ -129,8 +133,10 @@ function get_twitch_streamer_statuses(access_token, client_id, user_id) {
  * @param {Object} data     An object containing twitch streamer data
  */
 function fetch_streamer_avatars(data) {
+    // Instantiate string of streamer usernames for query purposes
     let streamer_names_query = "";
     
+    // Create query string from all live twitch streamers
     data.forEach(streamer_obj => {
         streamer_names_query += "login=" + streamer_obj["user_login"] + '&';
     });
@@ -141,20 +147,15 @@ function fetch_streamer_avatars(data) {
         'Client-Id':`${client_id}`
     }
     var streamer_data_lst = JSON.parse(httpGet(`https://api.twitch.tv/helix/users?${streamer_names_query}`, headerArgs))["data"];
+    
+    streamer_join_obj = {};
+    streamer_data_lst.forEach(avatar_obj => {
+        streamer_join_obj[avatar_obj["id"]] = avatar_obj;
+    });
 
-    // Sorting by viewer count
-    data.sort((a, b) => {
-        return a.viewer_count < b.viewer_count;
-    })
-    streamer_data_lst.sort((a, b) => {
-        return a.viewer_count < b.viewer_count;
-    })
-
-    for (let index = 0; index < data.length; index++) {
-        const streamer_obj = data[index];
-        
-        streamer_obj["profile_picture"] = streamer_data_lst[index]["profile_image_url"];
-    }
+    data.forEach(streamer_obj => {
+        streamer_obj["profile_picture"] = streamer_join_obj[streamer_obj["user_id"]]["profile_image_url"];
+    });
 }
 
 // function get_game_data(access_token, client_id, game_id_lst) {
