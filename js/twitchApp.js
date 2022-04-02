@@ -156,12 +156,6 @@ function fetch_streamer_avatars(data) {
     data.forEach(streamer_obj => {
         streamer_obj["profile_picture"] = streamer_join_obj[streamer_obj["user_id"]]["profile_image_url"];
     });
-
-    // for (let index = 0; index < data.length; index++) {
-    //     const streamer_obj = data[index];
-        
-    //     streamer_obj["profile_picture"] = streamer_data_lst[index]["profile_image_url"];
-    // }
 }
 
 // function get_game_data(access_token, client_id, game_id_lst) {
