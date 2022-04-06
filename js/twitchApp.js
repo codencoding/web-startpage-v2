@@ -8,7 +8,19 @@ var twitchTabBtn = document.getElementById('tab-twitch-control');
 var twitchStreamerLst = document.getElementById('twitch-streamer-lst');
 
 twitchTabBtn.addEventListener("click", () => {
-    let twitch_streamer_data = get_twitch_streamer_statuses(access_token, client_id, user_id)["data"];
+    let twitch_web_response;
+    try {
+        twitch_web_response = get_twitch_streamer_statuses(access_token, client_id, user_id);
+    } catch (error) {
+        if (error == "Unauthorized: 401 error") {
+            twitch_auth();
+        } else {
+            throw error;
+        }
+    }
+
+    twitch_streamer_data = twitch_web_response["data"];
+
     // Sorting by viewer count
     twitch_streamer_data.sort((a, b) => {
         return a.viewer_count < b.viewer_count;
@@ -30,6 +42,7 @@ authTwitchBtn.addEventListener("click", () => {
 const auth_code = fetch_param('code');
 if(auth_code) {    
     fetch_twitch_access_token(auth_code);
+    twitchTabBtn.click();
 }
 
 /***
@@ -123,9 +136,14 @@ function get_twitch_streamer_statuses(access_token, client_id, user_id) {
         'Authorization':`Bearer ${access_token}`,
         'Client-Id':`${client_id}`
     }
-    var live_streamer_lst = JSON.parse(httpGet(`https://api.twitch.tv/helix/streams/followed?user_id=${user_id}`, headerArgs));
 
-    return live_streamer_lst;
+    var streamer_get_response = JSON.parse(httpGet(`https://api.twitch.tv/helix/streams/followed?user_id=${user_id}`, headerArgs));
+
+    if (streamer_get_response.error) {
+        throw `${streamer_get_response.error}: ${streamer_get_response.status} error`
+    }
+
+    return streamer_get_response;
 }
 
 /***
