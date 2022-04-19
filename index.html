@@ -68,29 +68,36 @@
                         <div id="twitch-streamer-lst" class="list-group list-group-flush"></div>
                     </div>
                 </div>
-                <div class="tab-pane fade w-100 h-100 p-2" id="tab-settings" role="tabpanel" aria-labelledby="tab-element-control">
-                    <!-- <div class="w-100 pb-2">
-                        <label for="launchLinkUploadBtn">Upload new launch links:</label>
-                        <input id="launchLinkUploadBtn" type="file" class="border border-light p-2 rounded">
-                    </div>
-                    <div class="w-100 pb-2">
-                        Test Form
-                        <form enctype = "multipart/form-data" onsubmit="return false;" >
-                            <input id="file" type="file" name="static_file" />
-                            <button id="upload-button" onclick="uploadFile(this.form)"> Upload </button>
-                        </form>
-                    </div> -->
-                    <div class="w-100 pb-2 px-2">
-                        <label for="resetLaunchLinksBtn" hidden>Reset launch links</label>
-                        <button id="resetLaunchLinksBtn" class="btn btn-outline-light">Reset launch links</button>
-                    </div>
-                    <div class="w-100 pb-2 px-2">
-                        <label for="authTwitchBtn" hidden>Run Twitch Authenticator</label>
-                        <button id="authTwitchBtn" class="btn btn-outline-light">Run Twitch Authenticator</button>
-                    </div>
-                    <div class="w-100 pb-2 px-2">
-                        <label for="openDevConsoleBtn" hidden>Toggle Debug Console</label>
-                        <button id="openDevConsoleBtn" class="btn btn-outline-light">Toggle Debug Console</button>
+                <div class="tab-pane fade w-100 h-100 p-2 container" id="tab-settings" role="tabpanel" aria-labelledby="tab-element-control">
+                    <div class="px-0 row">
+                        <div class="col w-100">
+                            <div class="w-100 pb-2">
+                                <label for="authTwitchBtn" hidden>Run Twitch Authenticator</label>
+                                <button id="authTwitchBtn" class="btn btn-outline-light text-align-start w-100">Run Twitch Authenticator</button>
+                            </div>
+                            <div class="w-100 pb-2">
+                                <label for="openDevConsoleBtn" hidden>Toggle Debug Console</label>
+                                <button id="openDevConsoleBtn" class="btn btn-outline-light w-100">Toggle Debug Console</button>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="w-100 pb-2">
+                                <label for="downloadLaunchLinksBtn" hidden>Download launch links</label>
+                                <button id="downloadLaunchLinksBtn" class="btn btn-outline-light w-100">Download launch links</button>
+                            </div>
+                            <div class="w-100 pb-2">
+                                <label for="uploadLaunchLinksDropdown" hidden>Upload launch links</label>
+                                <button id="uploadLaunchLinksDropdown" class="btn btn-outline-light w-100"  data-bs-toggle="collapse" data-bs-target="#collapseJSONInput" aria-expanded="false" aria-controls="collapseJSONInput">Upload launch links</button>
+                            </div>
+                            <div id="collapseJSONInput" class="w-100 collapse">
+                                <div class="input-group mb-3">
+                                    <label for="uploadLaunchLinksInpt" hidden>Download launch links</label>
+                                    <input id="uploadLaunchLinksInpt" type="text" class="form-control rounded-start border border-light border-1" placeholder="Paste JSON here..."></input>
+                                    <label for="uploadLaunchLinksBtn" hidden>Upload launch links</label>
+                                    <button id="uploadLaunchLinksBtn" class="btn btn-success" type="button">Upload</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div id="dev-div" class="w-100 h-75 rounded visually-hidden p-2">
                         <h4>Debug Console</h4>

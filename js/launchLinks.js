@@ -1,10 +1,16 @@
 // var launchLinksJSON
-var launchLinksContainer
-var resetLaunchLinksBtn = document.getElementById("resetLaunchLinksBtn")
+var launchLinksContainer;
+var downloadLaunchLinksBtn = document.getElementById("downloadLaunchLinksBtn");
+
+var uploadLaunchLinksInpt = document.getElementById("uploadLaunchLinksInpt");
+var uploadLaunchLinksBtn = document.getElementById("uploadLaunchLinksBtn");
 
 
-resetLaunchLinksBtn.addEventListener("click", () => {
-    clearLaunchLinksCache()
+downloadLaunchLinksBtn.addEventListener("click", () => {
+    downloadLaunchLinks()
+})
+uploadLaunchLinksBtn.addEventListener("click", () => {
+    updateLaunchLinks(uploadLaunchLinksInpt.value)
 })
 
 
@@ -58,36 +64,34 @@ function populateLaunchLinks(launchLinksJSON) {
     }
 }
 
-function clearLaunchLinksCache() {
-    localStorage = localStorage.removeItem("launch-links")
-    loadLaunchLinkData()
-}
-
-function setCustomLaunchLinks(fPath) {
-    localStorage.setItem("custom-launch-links", fPath)
-}
-
-function clearCustomLaunchLinks() {
-    localStorage = localStorage.removeItem("custom-launch-links")
-}
-
-function cacheLaunchLinks(callback) {
-    let fPath = "data/launch-links.json"
-
-    if ("custom-launch-links" in localStorage) {
-        fPath = localStorage.getItem("custom-launch-links")
-    }
-
-    fetchJSON(fPath, (response) => {
-        localStorage.setItem("launch-links", response)
-        callback()
-    });
-}
-
 function loadLaunchLinkData() {
     if (!("launch-links" in localStorage)) {
         cacheLaunchLinks(loadLaunchLinkData)
     } else {
         populateLaunchLinks(JSON.parse(localStorage.getItem("launch-links")))
     }
+}
+
+function downloadLaunchLinks() {
+    let elemDownloadLink = document.createElement('a');
+    elemDownloadLink.download = "launch-links.json";
+
+    let strLaunchLinks = localStorage.getItem('launch-links');
+    
+    elemDownloadLink.href = "data:text/json;charset=utf-8," + strLaunchLinks;
+    elemDownloadLink.click();
+}
+
+function updateLaunchLinks(strLaunchLinksJSON) {
+    let objLaunchLinksJSON;
+
+    try {
+        objLaunchLinksJSON = JSON.parse(strLaunchLinksJSON);
+    } catch (e) {
+        return;
+    }
+
+    localStorage.setItem('launch-links', strLaunchLinksJSON);
+
+    loadLaunchLinkData();
 }
