@@ -1,5 +1,5 @@
 // var launchLinksJSON
-var launchLinksContainer;
+var launchLinksContainer = document.getElementById("launchLinksContainer");
 var downloadLaunchLinksBtn = document.getElementById("downloadLaunchLinksBtn");
 
 var uploadLaunchLinksInpt = document.getElementById("uploadLaunchLinksInpt");
@@ -65,11 +65,11 @@ function populateLaunchLinks(launchLinksJSON) {
 }
 
 function loadLaunchLinkData() {
-    if (!("launch-links" in localStorage)) {
-        cacheLaunchLinks(loadLaunchLinkData)
-    } else {
-        populateLaunchLinks(JSON.parse(localStorage.getItem("launch-links")))
-    }
+    populateLaunchLinks(JSON.parse(localStorage.getItem("launch-links")))
+}
+
+function cacheLaunchLinks(strLaunchLinksJSON) {
+    localStorage.setItem('launch-links', strLaunchLinksJSON);
 }
 
 function downloadLaunchLinks() {
@@ -91,7 +91,7 @@ function updateLaunchLinks(strLaunchLinksJSON) {
         return;
     }
 
-    localStorage.setItem('launch-links', strLaunchLinksJSON);
+    cacheLaunchLinks(strLaunchLinksJSON)
 
     loadLaunchLinkData();
 }
