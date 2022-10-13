@@ -81,10 +81,6 @@ a.list-group-item.link-elem:focus {
     background-color: var(--bg-tertiary) !important;
 }
 
-#center-window > div.tab-content {
-    height: 90%;
-}
-
 .img-thumb {
     width: 35px;
 }
@@ -181,4 +177,8 @@ a.list-group-item.link-elem:focus {
 
 #tab-bookmarks {
     height: 92%;
+}
+
+#parentContainer {
+    height: 82.5%;
 }
