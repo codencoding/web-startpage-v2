@@ -35,10 +35,13 @@
                             </svg>
                         </button>
                     </li>
+                    <li class="ms-1 mt-1 nav-item" role="presentation" id="bookmarksBtn">
+                        <a id="tab-bookmark-control" href="#tab-bookmarks" class="text-center px-1 nav-link" data-bs-toggle="pill" role="tab" aria-controls="tab-bookmarks" aria-selected="false">Bookmarks</a>
+                    </li>
                 </ul>
                 <div class="col text-white">
                     <div class="row p-0 m-0">
-                        <p class="m-0 p-0">
+                        <p class="m-0 p-0 pb-2">
                             <span id="date" class="m-0 p-0">
                                 Date
                             </span>
@@ -48,7 +51,7 @@
                         </p>
                     </div>
                     <div class="row p-0 m-0">
-                        <p class="my-0 p-0 border-top border-danger">
+                        <p class="my-0 p-0 pt-2 border-top border-danger">
                             <span id="temperature" class="my-0 p-0 pe-2">Temp</span>
                             <span id="weather-desc" class="my-0 p-0 text-right">Temp description</span>
                         </p>
@@ -57,16 +60,10 @@
             </div>
             <div class="tab-content text-light">
                 <div class="tab-pane fade show active h-100" id="tab-home" role="tabpanel" aria-labelledby="tab-home-control">
-                    <div class="border-light border-1" id="bookmarkBtnContainer">
-                        <a id="tab-bookmark-control" href="#tab-bookmarks" class="text-light text-center px-1 nav-link active" data-bs-toggle="pill" role="tab" aria-controls="tab-bookmarks" aria-selected="true">Bookmarks</a>
-                    </div>
                     <div id="launchLinksContainer" class="container-fluid h-100 m-0 p-0 row w-100"></div>
                 </div>
-                <div class="tab-pane fade h-100" id="tab-bookmarks" role="tabpanel" aria-labelledby="tab-bookmark-control">
-                    <div class="border-light border-1" id="bookmarkBtnContainer">
-                        <a id="tab-bookmark-control" href="#tab-bookmarks" class="text-light text-center px-1 nav-link active" data-bs-toggle="pill" role="tab" aria-controls="tab-bookmarks" aria-selected="true">Bookmarks</a>
-                    </div>
-                    <div id="" class="container-fluid h-100 m-0 p-0 row w-100"></div>
+                <div class="tab-pane fade" id="tab-bookmarks" role="tabpanel" aria-labelledby="tab-bookmark-control">
+                    <p>booksmark tab</p>
                 </div>
                 <div class="tab-pane fade" id="tab-discord" role="tabpanel" aria-labelledby="tab-discord-control">
                     <iframe class="bg-discord" id="discord-widget" src="https://discord.com/widget?id=106615501169377280&theme=dark" height="500" width="550" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>

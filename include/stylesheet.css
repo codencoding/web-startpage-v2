@@ -162,14 +162,23 @@ a.list-group-item.link-elem:focus {
 }
 
 #tab-bookmark-control {
-    border: 1px solid red;
+    border: 1px solid rgb(148, 24, 24);
     /* margin-bottom: 3.5%; */
     border-radius: 4px;
     background-color: rgb(58, 58, 58);
+    background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity));
 
 }
 
 #tab-bookmark-control:hover {
     border: 1px solid rgba(0, 0, 0, 0);
     background-color: rgb(123, 35, 35);
+}
+
+#bookmarksBtn {
+    width: 95%;
+}
+
+#tab-bookmarks {
+    height: 92%;
 }
