@@ -63,7 +63,421 @@
                     <div id="launchLinksContainer" class="container-fluid h-100 m-0 p-0 row w-100"></div>
                 </div>
                 <div class="tab-pane fade h-100" id="tab-bookmarks" role="tabpanel" aria-labelledby="tab-bookmark-control">
-                    <div id="bookmarksContainer" class="container-fluid h-100 m-0 p-0 row w-100"></div>
+                    <div id="bookmarksContainer" class="container-fluid h-100 m-0 p-0 row w-100 overflow-hidden">
+                        <!-- <div class="align-middle container-fluid d-flex align-items-center justify-content-center mx-2 px-0" id="bookmarkInputs"> -->
+                        <div class="container-fluid align-middle d-flex px-0 py-2 pb-0" id="bookmarkInputs">
+                            <div class="input-group">
+                                <input id="inputTempLinkValue" class="form-control border-0" type="text" placeholder="Label">
+                                <input id="inputTempLinkHref" class="form-control border-top-0 border-bottom-0 border-end-0" type="text" placeholder="HTML Address">
+                                <input id="inputTempLinkCol" class="form-control border-top-0 border-bottom-0 border-end-0" type="text" placeholder="Col # (0 indexed)">
+                                <button class="btn btn-outline-dark btn-light border-0" type="button">Add link</button>
+                            </div>
+                        </div>
+                        <div id="linksBookmarkTabContainer" class="container-fluid d-flex justify-content-between px-auto mx-0 row pb-2 overflow-scroll scrollbarHide">
+                            <div class="col ps-0 px-1 h-100">
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col px-1 h-100">
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col pe-0 px-1 h-100">
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group w-100 pb-2">
+                                    <a href="https://youtube.com" class="btn btn-danger w-75">Youtube</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Move link up</a></li>
+                                        <li><a class="dropdown-item" href="#">Move link down</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">Remove link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="tab-discord" role="tabpanel" aria-labelledby="tab-discord-control">
                     <iframe class="bg-discord" id="discord-widget" src="https://discord.com/widget?id=106615501169377280&theme=dark" height="500" width="550" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
