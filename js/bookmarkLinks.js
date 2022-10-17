@@ -16,6 +16,9 @@ btnTempLinkSubmitElem.addEventListener("click", () => {
 
 btnEditTempLinksElem.addEventListener("click", () => {
     boolEditToggle = btnEditTempLinksElem.getAttribute("aria-expanded");
+    if (boolEditToggle == "false") {
+        saveTempLinkElems();
+    }
     toggleTempLinkEdits();
 })
 
@@ -47,14 +50,10 @@ function addTempLinkElem() {
         default:
             break;
     }
-
-    saveTempLinkElems();
 }
 
 function removeSelfTempLink(e) {
     e.parentNode.parentNode.parentNode.remove();
-
-    saveTempLinkElems();
 }
 
 function extractTempLinkElems() {
@@ -100,8 +99,6 @@ function moveLink(elemLink, strDirection) {
         default:
             break;
     }
-
-    saveTempLinkElems();
 }
 
 function toggleTempLinkEdits() {
