@@ -184,39 +184,8 @@ a.list-group-item.link-elem:focus {
     width: 50%;
 }
 
-.bookmarkLink:hover {
-    
-}
-
 .bookmarkParent {
     width: 100%;
-    /* position: relative;
-    display: block;
-    margin-left: 5%;
-    text-decoration: none;
-    color: white;
-    border: 1px solid rgb(123, 35, 35);
-    margin: 2.5%;
-    padding: 2.5%;
-    border-radius: 4px; */
-}
-
-/* .bookmarkParent:hover {
-    color: white;
-    background-color: rgb(123, 35, 35);
-} */
-
-#bookmarkInputs {
-    height: 13%;
-    /* border: 1px solid red; */
-    /* margin: 2.5%; */
-    /* padding: 0.5%; */
-    width: 95%;
-    display: inline-block;
-}
-
-#btnAddNewLink {
-    /* width: 1px; */
 }
 
 .btn-options {
@@ -228,9 +197,28 @@ a.list-group-item.link-elem:focus {
 }
 
 #linksBookmarkTabContainer {
-    height: 84%;
+    /* height: 84%; */
+    flex:1;
 }
 
 .scrollbarHide {
     scrollbar-width: none; /* for Firefox */
+}
+
+#btnEditTempLinks {
+    height: 8%;
+    border-radius: 0;
+}
+
+#inputTempLinkValue {
+    border-radius: 0;
+}
+
+#btnTempLinkSubmit {
+    border-radius: 0;
+}
+
+#bookmarksContainer { 
+    display:flex;
+    flex-direction:column;
 }

@@ -94,4 +94,6 @@ function moveLink(elemLink, strDirection) {
         default:
             break;
     }
+
+    saveTempLinkElems();
 }
