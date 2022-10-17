@@ -17,7 +17,7 @@ btnTempLinkSubmitElem.addEventListener("click", () => {
 function generateTempLinkElem(label, href) {
     let elem = document.createElement("div");
     elem.className = "btn-group w-100 pb-2";
-    elem.innerHTML = "<div class=\"btn-group w-100 pb-2\"><a href=\"" + href + "\" class=\"btn btn-danger w-75\">" + label + "</a><button type=\"button\" class=\"btn btn-danger dropdown-toggle dropdown-toggle-split\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"visually-hidden\">Toggle Dropdown</span></button><ul class=\"dropdown-menu\"><li><a onclick=\"moveLink(this, \'up\');\" class=\"dropdown-item\" href=\"#\">Move link up</a></li><li><a onclick=\"moveLink(this, \'down\');\" class=\"dropdown-item\" href=\"#\">Move link down</a></li><li><hr class=\"dropdown-divider\"></li><li><a onclick=\"removeSelfTempLink(this);\" class=\"dropdown-item text-danger\" href=\"#\">Remove link</a></li></ul></div>";
+    elem.innerHTML = "<div class=\"btn-group w-100 pb-2\"><a href=\"" + href + "\" class=\"overflow-hidden btn btn-danger w-75\">" + label + "</a><button type=\"button\" class=\"btn btn-danger dropdown-toggle dropdown-toggle-split\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"visually-hidden\">Toggle Dropdown</span></button><ul class=\"dropdown-menu\"><li><a onclick=\"moveLink(this, \'up\');\" class=\"dropdown-item\" href=\"#\">Move link up</a></li><li><a onclick=\"moveLink(this, \'down\');\" class=\"dropdown-item\" href=\"#\">Move link down</a></li><li><hr class=\"dropdown-divider\"></li><li><a onclick=\"removeSelfTempLink(this);\" class=\"dropdown-item text-danger\" href=\"#\">Remove link</a></li></ul></div>";
 
     return elem.firstChild;
 }
