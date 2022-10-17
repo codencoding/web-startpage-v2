@@ -15,11 +15,11 @@ btnTempLinkSubmitElem.addEventListener("click", () => {
 })
 
 btnEditTempLinksElem.addEventListener("click", () => {
+    toggleTempLinkEdits();
     boolEditToggle = btnEditTempLinksElem.getAttribute("aria-expanded");
     if (boolEditToggle == "false") {
         saveTempLinkElems();
     }
-    toggleTempLinkEdits();
 })
 
 function generateTempLinkElem(label, href) {
