@@ -10,8 +10,6 @@ let col0TempLinks;
 let col1TempLinks;
 let col2TempLinks;
 
-loadTempLinkElems();
-
 btnTempLinkSubmitElem.addEventListener("click", () => {
     addTempLinkElem();
 })
