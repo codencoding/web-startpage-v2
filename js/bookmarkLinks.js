@@ -3,6 +3,8 @@ let inputTempLinkHrefElem = document.getElementById('inputTempLinkHref');
 let inputTempLinkColElem = document.getElementById('inputTempLinkCol');
 let btnTempLinkSubmitElem = document.getElementById('btnTempLinkSubmit');
 let linksBookmarkTabContainerElem = document.getElementById('linksBookmarkTabContainer');
+let btnEditTempLinksElem = document.getElementById('btnEditTempLinks');
+var boolEditToggle = btnEditTempLinksElem.getAttribute("aria-expanded");
 
 let col0TempLinks;
 let col1TempLinks;
@@ -14,10 +16,16 @@ btnTempLinkSubmitElem.addEventListener("click", () => {
     addTempLinkElem();
 })
 
+btnEditTempLinksElem.addEventListener("click", () => {
+    boolEditToggle = btnEditTempLinksElem.getAttribute("aria-expanded");
+    toggleTempLinkEdits();
+})
+
 function generateTempLinkElem(label, href) {
     let elem = document.createElement("div");
     elem.className = "btn-group w-100 pb-2";
-    elem.innerHTML = "<div class=\"btn-group w-100 pb-2\"><a href=\"" + href + "\" class=\"overflow-hidden btn btn-danger w-75\">" + label + "</a><button type=\"button\" class=\"btn btn-danger dropdown-toggle dropdown-toggle-split\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"visually-hidden\">Toggle Dropdown</span></button><ul class=\"dropdown-menu\"><li><a onclick=\"moveLink(this, \'up\');\" class=\"dropdown-item\" href=\"#\">Move link up</a></li><li><a onclick=\"moveLink(this, \'down\');\" class=\"dropdown-item\" href=\"#\">Move link down</a></li><li><hr class=\"dropdown-divider\"></li><li><a onclick=\"removeSelfTempLink(this);\" class=\"dropdown-item text-danger\" href=\"#\">Remove link</a></li></ul></div>";
+
+    elem.innerHTML = "<div class=\"btn-group w-100 pb-2\"><a href=\"" + href + "\" class=\"tempLinkBtn btn btn-danger w-75\">" + label + "</a><button type=\"button\" class=\"tempLinkDropdown btn btn-danger dropdown-toggle dropdown-toggle-split\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><span class=\"visually-hidden\">Toggle Dropdown</span></button><ul class=\"dropdown-menu\"><li><a onclick=\"moveLink(this, \'up\');\" class=\"dropdown-item\" href=\"#\">Move link up</a></li><li><a onclick=\"moveLink(this, \'down\');\" class=\"dropdown-item\" href=\"#\">Move link down</a></li><li><hr class=\"dropdown-divider\"></li><li><a onclick=\"removeSelfTempLink(this);\" class=\"dropdown-item text-danger\" href=\"#\">Remove link</a></li></ul></div>";
 
     return elem.firstChild;
 }
@@ -96,4 +104,28 @@ function moveLink(elemLink, strDirection) {
     }
 
     saveTempLinkElems();
+}
+
+function toggleTempLinkEdits() {
+    // TODO: Change all tempLinkBtn elems to have the rounded-end class
+    let lstTempLinkBtns = document.getElementsByClassName("tempLinkBtn");
+    
+    for (const ix in lstTempLinkBtns) {
+        if (Object.hasOwnProperty.call(lstTempLinkBtns, ix)) {
+            const elemTempLink = lstTempLinkBtns[ix];
+            
+            elemTempLink.classList.toggle("rounded-end");
+        }
+    }
+
+    // TODO: Change all tempLinkDropdown elems to have the display: none style
+    let lstTempLinkDropdowns = document.getElementsByClassName("tempLinkDropdown");
+    
+    for (const ix in lstTempLinkDropdowns) {
+        if (Object.hasOwnProperty.call(lstTempLinkDropdowns, ix)) {
+            const elemTempLink = lstTempLinkDropdowns[ix];
+            
+            elemTempLink.classList.toggle("d-none");
+        }
+    }
 }
