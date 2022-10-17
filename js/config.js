@@ -27,6 +27,7 @@ function init_page() {
     run_clock();
     update_weather();
     loadLaunchLinkData();
+    loadTempLinkElems();
     // load_theme_values();
     // add_discord();
     // add_spotify();
