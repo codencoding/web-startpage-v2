@@ -107,9 +107,7 @@ function moveLink(elemLink, strDirection) {
 }
 
 function toggleTempLinkEdits() {
-    // TODO: Change all tempLinkBtn elems to have the rounded-end class
     let lstTempLinkBtns = document.getElementsByClassName("tempLinkBtn");
-    
     for (const ix in lstTempLinkBtns) {
         if (Object.hasOwnProperty.call(lstTempLinkBtns, ix)) {
             const elemTempLink = lstTempLinkBtns[ix];
@@ -118,9 +116,7 @@ function toggleTempLinkEdits() {
         }
     }
 
-    // TODO: Change all tempLinkDropdown elems to have the display: none style
     let lstTempLinkDropdowns = document.getElementsByClassName("tempLinkDropdown");
-    
     for (const ix in lstTempLinkDropdowns) {
         if (Object.hasOwnProperty.call(lstTempLinkDropdowns, ix)) {
             const elemTempLink = lstTempLinkDropdowns[ix];
