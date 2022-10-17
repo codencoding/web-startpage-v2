@@ -21,28 +21,21 @@ function generateTempLinkElem(label, href) {
 
     return elem.firstChild;
 }
-
+let b;
 function addTempLinkElem() {
     let linkLabel = inputTempLinkValueElem.value;
     let linkHref = inputTempLinkHrefElem.value;
     let linkCol = inputTempLinkColElem.value;
-    console.log("adding temp link elem");
-    console.log("linkLabel: " + linkLabel);
-    console.log("linkHref: " + linkHref);
-    console.log("linkCol: " + linkCol);
 
-    let createdElem = generateTempLinkElem(linkLabel, linkHref);
-    console.log("created elem: ", createdElem);
-    
     switch (linkCol) {
         case "0":
-            col0TempLinks.appendChild(createdElem);
+            col0TempLinks.appendChild(generateTempLinkElem(linkLabel, linkHref));
             break;
         case "1":
-            col1TempLinks.appendChild(createdElem);
+            col1TempLinks.appendChild(generateTempLinkElem(linkLabel, linkHref));
             break;
         case "2":
-            col2TempLinks.appendChild(createdElem);
+            col2TempLinks.appendChild(generateTempLinkElem(linkLabel, linkHref));
             break;
     
         default:
@@ -53,7 +46,6 @@ function addTempLinkElem() {
 }
 
 function removeSelfTempLink(e) {
-    console.log("Removing...");
     e.parentNode.parentNode.parentNode.remove();
 
     saveTempLinkElems();
@@ -103,6 +95,3 @@ function moveLink(elemLink, strDirection) {
             break;
     }
 }
-
-
-console.log("bookmarksLinks.js loaded");
